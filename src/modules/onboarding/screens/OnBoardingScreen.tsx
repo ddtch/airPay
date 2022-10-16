@@ -8,10 +8,12 @@ import {mainStyles} from '../../../../styles/main.styles';
 import {LightButton} from '../../../core/components/LightButton';
 import {MainButton} from '../../../core/components/MainButton';
 import TextBlock from '../../../core/components/TextBlock';
+import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
+import { NAV_TYPE } from '../../../core/models/ScreenTypes';
 
-const OnBoardingScreen = () => {
+const OnboardingScreen = () => {
   const {t} = useTranslation();
-  const nav = useNavigation();
+  const {navigate} = useNavigation<NAV_TYPE>();
   const actionSheetRef = useRef<ActionSheetRef>(null);
 
   const handleLogin = () => {
@@ -19,7 +21,8 @@ const OnBoardingScreen = () => {
   };
 
   const handleConnectionProcess = () => {
-    nav.navigate();
+    actionSheetRef?.current?.hide();
+    navigate(SCREEN_NAME.OnboardingConnect);
   };
 
   return (
@@ -64,7 +67,7 @@ const OnBoardingScreen = () => {
   );
 };
 
-export default OnBoardingScreen;
+export default OnboardingScreen;
 
 const styles = StyleSheet.create({
   content: {

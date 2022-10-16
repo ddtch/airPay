@@ -7,7 +7,7 @@ import {
   StyleSheet,
   useColorScheme,
 } from 'react-native';
-
+import {Provider} from 'react-redux';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {SCREEN_PARAMS_ALL} from './src/core/models/ScreenTypes';
 import {SCREEN_NAME} from './src/core/constants/SCREEN_NAME';
@@ -18,6 +18,9 @@ import LoadingScreen from './src/modules/LoadingScreen';
 import OnboardingStack from './src/modules/onboarding';
 import {AirMoneyThemeDark} from './styles/main.styles';
 import {SheetProvider} from 'react-native-actions-sheet';
+import { RootState, store } from './src/store';
+import {useSelector, useDispatch} from 'react-redux';
+
 i18n.init();
 
 const App = () => {
@@ -34,9 +37,11 @@ const App = () => {
       // fallback={<FullScreenLoader />}
       ref={navigationRef}
       theme={scheme === 'dark' ? AirMoneyThemeDark : AirMoneyThemeDark}>
-      <SheetProvider>
-        <NavigateApp />
-      </SheetProvider>
+      <Provider store={store}>
+        <SheetProvider>
+          <NavigateApp />
+        </SheetProvider>
+      </Provider>
     </NavigationContainer>
   );
 };
@@ -44,7 +49,7 @@ const App = () => {
 const Stack = createNativeStackNavigator<SCREEN_PARAMS_ALL>();
 
 export const NavigateApp = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const {loggedIn} = useSelector((state: RootState) => state.auth);
   const [isLoaded, setIsLoaded] = useState(true);
 
   useEffect(() => {

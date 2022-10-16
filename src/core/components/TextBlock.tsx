@@ -4,13 +4,13 @@ import React, { PropsWithChildren } from 'react';
 type TextBlockProps = {
   variant: 'title' | 'subtitle' | 'body' | 'caption';
   alignment?: 'left' | 'center' | 'right',
-  text?: string;
+  style?: any;
 };
 
-const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, text, children, alignment}) => {
+const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, children, alignment, style}) => {
   return (
     <>
-      <Text style={{...styles[variant], textAlign: alignment ? alignment : 'left'}}>{children}</Text>
+      <Text style={{...styles[variant], ...style, textAlign: alignment ? alignment : 'left'}}>{children}</Text>
     </>
   );
 };

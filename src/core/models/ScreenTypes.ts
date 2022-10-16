@@ -7,6 +7,9 @@ export type SCREEN_PARAMS_ALL = {
   [SCREEN_NAME.LoadingStack]: undefined;
 
   [SCREEN_NAME.OnboardingWellcome]: undefined;
+  [SCREEN_NAME.OnboardingConnect]: undefined;
+  [SCREEN_NAME.OnboardingConnectSuccess]: undefined;
+  [SCREEN_NAME.OnboardingConnectError]: undefined;
 
   
   [SCREEN_NAME.MainTabRoutes]: undefined;

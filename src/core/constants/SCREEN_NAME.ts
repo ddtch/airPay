@@ -6,6 +6,9 @@ export enum SCREEN_TYPE {
 
   //ONBOARDING_STACK
   OnboardingWellcome = 'OnboardingWelcome',
+  OnboardingConnect = 'OnboardingConnect',
+  OnboardingConnectSuccess = 'OnboardingSuccess',
+  OnboardingConnectError = 'OnboardingError',
 
   //HOME_STACK
   TabRoutes = 'TabRoutes',
