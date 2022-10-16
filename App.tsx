@@ -1,63 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React, {type PropsWithChildren} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, {useEffect, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
-  View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SCREEN_PARAMS_ALL} from './src/core/models/ScreenTypes';
+import {SCREEN_NAME} from './src/core/constants/SCREEN_NAME';
+import {navigationRef} from './src/core/utils';
+import i18n from './src/i18n';
+import HomeStack from './src/modules/home';
+import LoadingScreen from './src/modules/LoadingScreen';
+import OnboardingStack from './src/modules/onboarding';
+import {AirMoneyThemeDark} from './styles/main.styles';
+import {SheetProvider} from 'react-native-actions-sheet';
+i18n.init();
 
 const App = () => {
+  const {t} = useTranslation();
+  const scheme = useColorScheme();
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -65,36 +30,35 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer
+      // fallback={<FullScreenLoader />}
+      ref={navigationRef}
+      theme={scheme === 'dark' ? AirMoneyThemeDark : AirMoneyThemeDark}>
+      <SheetProvider>
+        <NavigateApp />
+      </SheetProvider>
+    </NavigationContainer>
+  );
+};
+
+const Stack = createNativeStackNavigator<SCREEN_PARAMS_ALL>();
+
+export const NavigateApp = () => {
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  useEffect(() => {
+    StatusBar.setBarStyle('dark-content');
+  }, []);
+
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      {!isLoaded && (<Stack.Screen name={SCREEN_NAME.LoadingStack} component={LoadingScreen}/>)}
+      
+      {isLoaded && !loggedIn && (<Stack.Screen name={SCREEN_NAME.OnboardingStack} component={OnboardingStack}/>)}
+      
+      {isLoaded && loggedIn && (<Stack.Screen name={SCREEN_NAME.HomeStack} component={HomeStack}/>)}
+    </Stack.Navigator>
   );
 };
 
