@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: '500',
-    marginBottom: 2,
+    fontFamily: 'MazzardM-SemiBold',
+    marginBottom: 4,
   },
   date: {
     opacity: 0.6,

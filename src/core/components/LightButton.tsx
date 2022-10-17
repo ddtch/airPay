@@ -35,6 +35,6 @@ const styles = (theme: IMyTheme) => StyleSheet.create({
   btnTitle: {
     color: theme.colors.primary,
     fontSize: 18,
-    fontWeight: '500',
+    fontFamily: 'MazzardM-SemiBold',
   }
 })

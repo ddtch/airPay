@@ -9,11 +9,29 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* AirDollarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AirDollarTests.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-AirDollar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-AirDollar.a */; };
+		0CF197F85C3441B89A93D20B /* MazzardM-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D26115051064D31880E1D59 /* MazzardM-BoldItalic.otf */; };
+		0F6F818DD5E74543891661AC /* MazzardM-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE9E6B7B91E34FC195E6D5B4 /* MazzardM-ExtraBoldItalic.otf */; };
+		10D2E03B64C74CAC8E71AF8C /* MazzardM-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2179FD3BF41C454B975FDBB0 /* MazzardM-Black.otf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		19D7534940894571AA723DAD /* MazzardM-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 696B19F743704DC19A83DECE /* MazzardM-Thin.otf */; };
+		2CF44C3B71754B979773C4D9 /* MazzardM-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 935D17B389154054BDC71896 /* MazzardM-ExtraLight.otf */; };
+		45526DB65BAC49E38DB4DC3D /* MazzardM-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510D29D8511643809591C5D3 /* MazzardM-Regular.otf */; };
+		48B52A6916DF4C3E937195A9 /* MazzardM-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5B0FE69F4549DF813837B5 /* MazzardM-Light.otf */; };
+		49A3B17F9D7843C2B18A7B52 /* MazzardM-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4F31AFD56B1438981E3E009 /* MazzardM-ThinItalic.otf */; };
+		659E5583049E4575B23C0167 /* MazzardM-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2EDA4F847C794651BA73BF32 /* MazzardM-SemiBold.otf */; };
+		672B2844E85B4865A91B2708 /* MazzardM-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5BBA164F56346B5AD138B23 /* MazzardM-MediumItalic.otf */; };
 		7699B88040F8A987B510C191 /* libPods-AirDollar-AirDollarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-AirDollar-AirDollarTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		85067254D5774963AFDA57B0 /* MazzardM-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 035810F478C242038C4245E9 /* MazzardM-ExtraLightItalic.otf */; };
+		878AF37C0E544E35922069C7 /* MazzardM-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F634513D880A40D78A259CF9 /* MazzardM-LightItalic.otf */; };
+		98F9DE2F78B0435282A96A26 /* MazzardM-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CEA2830AAFA4CABB7272FE3 /* MazzardM-Bold.otf */; };
+		CAEBDBB4023F41CE8241B729 /* MazzardM-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F4CFE1B7B5D477292D180BC /* MazzardM-BlackItalic.otf */; };
+		DF3EFD9C75B4478CA22D1E9B /* MazzardM-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 519152EBC7AF4E9A801B93D6 /* MazzardM-Medium.otf */; };
+		FA3BC209BD344ECA81D15CDD /* MazzardM-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 622B1AF3A0004E97B605897C /* MazzardM-Italic.otf */; };
+		FDF511E981E24ACEA076B43D /* MazzardM-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6B3378005EE4B2993A0FA3D /* MazzardM-SemiBoldItalic.otf */; };
+		FF482A44EFD94267AA595361 /* MazzardM-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D740A3DFB7D04D1699DECE46 /* MazzardM-ExtraBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +48,7 @@
 		00E356EE1AD99517003FC87E /* AirDollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirDollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AirDollarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirDollarTests.m; sourceTree = "<group>"; };
+		035810F478C242038C4245E9 /* MazzardM-ExtraLightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-ExtraLightItalic.otf"; path = "../assets/fonts/MazzardM-ExtraLightItalic.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* AirDollar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirDollar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AirDollar/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = AirDollar/AppDelegate.mm; sourceTree = "<group>"; };
@@ -37,13 +56,30 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AirDollar/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AirDollar/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-AirDollar-AirDollarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirDollar-AirDollarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2179FD3BF41C454B975FDBB0 /* MazzardM-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Black.otf"; path = "../assets/fonts/MazzardM-Black.otf"; sourceTree = "<group>"; };
+		2CEA2830AAFA4CABB7272FE3 /* MazzardM-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Bold.otf"; path = "../assets/fonts/MazzardM-Bold.otf"; sourceTree = "<group>"; };
+		2EDA4F847C794651BA73BF32 /* MazzardM-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-SemiBold.otf"; path = "../assets/fonts/MazzardM-SemiBold.otf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-AirDollar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirDollar.debug.xcconfig"; path = "Target Support Files/Pods-AirDollar/Pods-AirDollar.debug.xcconfig"; sourceTree = "<group>"; };
+		510D29D8511643809591C5D3 /* MazzardM-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Regular.otf"; path = "../assets/fonts/MazzardM-Regular.otf"; sourceTree = "<group>"; };
+		519152EBC7AF4E9A801B93D6 /* MazzardM-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Medium.otf"; path = "../assets/fonts/MazzardM-Medium.otf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-AirDollar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirDollar.release.xcconfig"; path = "Target Support Files/Pods-AirDollar/Pods-AirDollar.release.xcconfig"; sourceTree = "<group>"; };
+		5B5B0FE69F4549DF813837B5 /* MazzardM-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Light.otf"; path = "../assets/fonts/MazzardM-Light.otf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-AirDollar-AirDollarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirDollar-AirDollarTests.debug.xcconfig"; path = "Target Support Files/Pods-AirDollar-AirDollarTests/Pods-AirDollar-AirDollarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-AirDollar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirDollar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		622B1AF3A0004E97B605897C /* MazzardM-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Italic.otf"; path = "../assets/fonts/MazzardM-Italic.otf"; sourceTree = "<group>"; };
+		696B19F743704DC19A83DECE /* MazzardM-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-Thin.otf"; path = "../assets/fonts/MazzardM-Thin.otf"; sourceTree = "<group>"; };
+		6D26115051064D31880E1D59 /* MazzardM-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-BoldItalic.otf"; path = "../assets/fonts/MazzardM-BoldItalic.otf"; sourceTree = "<group>"; };
+		7F4CFE1B7B5D477292D180BC /* MazzardM-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-BlackItalic.otf"; path = "../assets/fonts/MazzardM-BlackItalic.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AirDollar/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-AirDollar-AirDollarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirDollar-AirDollarTests.release.xcconfig"; path = "Target Support Files/Pods-AirDollar-AirDollarTests/Pods-AirDollar-AirDollarTests.release.xcconfig"; sourceTree = "<group>"; };
+		935D17B389154054BDC71896 /* MazzardM-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-ExtraLight.otf"; path = "../assets/fonts/MazzardM-ExtraLight.otf"; sourceTree = "<group>"; };
+		A5BBA164F56346B5AD138B23 /* MazzardM-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-MediumItalic.otf"; path = "../assets/fonts/MazzardM-MediumItalic.otf"; sourceTree = "<group>"; };
+		C4F31AFD56B1438981E3E009 /* MazzardM-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-ThinItalic.otf"; path = "../assets/fonts/MazzardM-ThinItalic.otf"; sourceTree = "<group>"; };
+		C6B3378005EE4B2993A0FA3D /* MazzardM-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-SemiBoldItalic.otf"; path = "../assets/fonts/MazzardM-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		D740A3DFB7D04D1699DECE46 /* MazzardM-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-ExtraBold.otf"; path = "../assets/fonts/MazzardM-ExtraBold.otf"; sourceTree = "<group>"; };
+		DE9E6B7B91E34FC195E6D5B4 /* MazzardM-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-ExtraBoldItalic.otf"; path = "../assets/fonts/MazzardM-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F634513D880A40D78A259CF9 /* MazzardM-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MazzardM-LightItalic.otf"; path = "../assets/fonts/MazzardM-LightItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +117,32 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04997C3DAF12484FBC6EF6B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2179FD3BF41C454B975FDBB0 /* MazzardM-Black.otf */,
+				7F4CFE1B7B5D477292D180BC /* MazzardM-BlackItalic.otf */,
+				2CEA2830AAFA4CABB7272FE3 /* MazzardM-Bold.otf */,
+				6D26115051064D31880E1D59 /* MazzardM-BoldItalic.otf */,
+				D740A3DFB7D04D1699DECE46 /* MazzardM-ExtraBold.otf */,
+				DE9E6B7B91E34FC195E6D5B4 /* MazzardM-ExtraBoldItalic.otf */,
+				935D17B389154054BDC71896 /* MazzardM-ExtraLight.otf */,
+				035810F478C242038C4245E9 /* MazzardM-ExtraLightItalic.otf */,
+				622B1AF3A0004E97B605897C /* MazzardM-Italic.otf */,
+				5B5B0FE69F4549DF813837B5 /* MazzardM-Light.otf */,
+				F634513D880A40D78A259CF9 /* MazzardM-LightItalic.otf */,
+				519152EBC7AF4E9A801B93D6 /* MazzardM-Medium.otf */,
+				A5BBA164F56346B5AD138B23 /* MazzardM-MediumItalic.otf */,
+				510D29D8511643809591C5D3 /* MazzardM-Regular.otf */,
+				2EDA4F847C794651BA73BF32 /* MazzardM-SemiBold.otf */,
+				C6B3378005EE4B2993A0FA3D /* MazzardM-SemiBoldItalic.otf */,
+				696B19F743704DC19A83DECE /* MazzardM-Thin.otf */,
+				C4F31AFD56B1438981E3E009 /* MazzardM-ThinItalic.otf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* AirDollar */ = {
@@ -122,6 +184,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				04997C3DAF12484FBC6EF6B2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -244,6 +307,24 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				10D2E03B64C74CAC8E71AF8C /* MazzardM-Black.otf in Resources */,
+				CAEBDBB4023F41CE8241B729 /* MazzardM-BlackItalic.otf in Resources */,
+				98F9DE2F78B0435282A96A26 /* MazzardM-Bold.otf in Resources */,
+				0CF197F85C3441B89A93D20B /* MazzardM-BoldItalic.otf in Resources */,
+				FF482A44EFD94267AA595361 /* MazzardM-ExtraBold.otf in Resources */,
+				0F6F818DD5E74543891661AC /* MazzardM-ExtraBoldItalic.otf in Resources */,
+				2CF44C3B71754B979773C4D9 /* MazzardM-ExtraLight.otf in Resources */,
+				85067254D5774963AFDA57B0 /* MazzardM-ExtraLightItalic.otf in Resources */,
+				FA3BC209BD344ECA81D15CDD /* MazzardM-Italic.otf in Resources */,
+				48B52A6916DF4C3E937195A9 /* MazzardM-Light.otf in Resources */,
+				878AF37C0E544E35922069C7 /* MazzardM-LightItalic.otf in Resources */,
+				DF3EFD9C75B4478CA22D1E9B /* MazzardM-Medium.otf in Resources */,
+				672B2844E85B4865A91B2708 /* MazzardM-MediumItalic.otf in Resources */,
+				45526DB65BAC49E38DB4DC3D /* MazzardM-Regular.otf in Resources */,
+				659E5583049E4575B23C0167 /* MazzardM-SemiBold.otf in Resources */,
+				FDF511E981E24ACEA076B43D /* MazzardM-SemiBoldItalic.otf in Resources */,
+				19D7534940894571AA723DAD /* MazzardM-Thin.otf in Resources */,
+				49A3B17F9D7843C2B18A7B52 /* MazzardM-ThinItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,8 +61,8 @@ const ActionsBlock: React.FC<ActionsBlockProps> = ({actionSelected}) => {
         <TouchableOpacity
           key={el.id}
           style={{
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             borderRadius: 6,
             backgroundColor: '#4060B2',
             display: 'flex',
@@ -70,12 +70,15 @@ const ActionsBlock: React.FC<ActionsBlockProps> = ({actionSelected}) => {
             alignItems: 'center',
             alignContent: 'center',
             justifyContent: 'center',
+            marginBottom: 10,
           }}
           onPress={() => actionSelected(el.type)}>
           {el.icon}
           <Text
             style={{
               color: '#fff',
+              fontFamily: 'MazzardM-Medium',
+              marginTop: 2,
             }}>
             {el.label}
           </Text>
@@ -250,7 +253,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'flex-start',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
     padding: 20,
   },
   personal: {
@@ -270,8 +273,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   names: {
-    fontWeight: '600',
-    fontSize: 16,
+    fontFamily: 'MazzardM-SemiBold',
+    fontSize: 20,
     marginBottom: 10,
     color: '#fff',
   },

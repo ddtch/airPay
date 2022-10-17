@@ -21,6 +21,8 @@ import {SheetProvider} from 'react-native-actions-sheet';
 import { RootState, store } from './src/store';
 import {useSelector, useDispatch} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
+//@ts-ignore
+import GlobalFont from 'react-native-global-font';
 
 i18n.init();
 
@@ -35,6 +37,7 @@ const App = () => {
 
   useEffect(() => {
     SplashScreen?.hide();
+    GlobalFont.applyGlobal('MazzardM-Regular')
   }, [])
 
   return (

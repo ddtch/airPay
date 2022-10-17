@@ -46,6 +46,6 @@ const styles = (theme: IMyTheme, nowShadows: boolean) => StyleSheet.create({
   btnTitle: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: '600',
+    fontFamily: 'MazzardM-Bold',
   }
 })

@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/MazzardM-Black.otf",
+      "sha1": "bdc45eb4fe8196436ffad3333677df851f8dcfd1"
+    },
+    {
+      "path": "assets/fonts/MazzardM-BlackItalic.otf",
+      "sha1": "c84b9ad94e9f26338fcfd40f63a03f7e82d7e8a6"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Bold.otf",
+      "sha1": "36883c1fd26db5254bdb263f5213bf16bfe4fcd4"
+    },
+    {
+      "path": "assets/fonts/MazzardM-BoldItalic.otf",
+      "sha1": "ebe1c8ec441185c936a2cc7323590606d12b38b7"
+    },
+    {
+      "path": "assets/fonts/MazzardM-ExtraBold.otf",
+      "sha1": "36db0ad71a2de9da0b57e0153bb45c53e0445331"
+    },
+    {
+      "path": "assets/fonts/MazzardM-ExtraBoldItalic.otf",
+      "sha1": "c80aa134da1263a722122fbfa661ba0474f19a72"
+    },
+    {
+      "path": "assets/fonts/MazzardM-ExtraLight.otf",
+      "sha1": "f95f8fa97285ba9cef1213abc5353336e6e79ef2"
+    },
+    {
+      "path": "assets/fonts/MazzardM-ExtraLightItalic.otf",
+      "sha1": "d49e7f0660b80c0e2aed23157e88dd66009ea663"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Italic.otf",
+      "sha1": "dc037da06b1b8d19ac305b84840aaa6457a86e6a"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Light.otf",
+      "sha1": "d512932f6168239e22e659c4655c26552f421464"
+    },
+    {
+      "path": "assets/fonts/MazzardM-LightItalic.otf",
+      "sha1": "29fb25cb7860c167a4ee48c76ec3fcf63ed4d5ca"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Medium.otf",
+      "sha1": "2127e13daa4160be04a16e5bc0ca4515499da489"
+    },
+    {
+      "path": "assets/fonts/MazzardM-MediumItalic.otf",
+      "sha1": "444c8bb38d43cd7aefc0b3b672aa45bdd6b824f5"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Regular.otf",
+      "sha1": "36e474f26138fcbac55007cb3311a77c72d21d5f"
+    },
+    {
+      "path": "assets/fonts/MazzardM-SemiBold.otf",
+      "sha1": "80abe90e268e4b5b884cf1c37d317cf577d0deba"
+    },
+    {
+      "path": "assets/fonts/MazzardM-SemiBoldItalic.otf",
+      "sha1": "990ef9718ae72bdcb556a1bc79450d72cfaf5511"
+    },
+    {
+      "path": "assets/fonts/MazzardM-Thin.otf",
+      "sha1": "1f46c8705d888942d8383333e557d2a4cae583b4"
+    },
+    {
+      "path": "assets/fonts/MazzardM-ThinItalic.otf",
+      "sha1": "a20a7d455e8eeb7ea85d98ad8cf959502da3f441"
+    }
+  ]
+}

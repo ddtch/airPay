@@ -5030,6 +5030,11 @@ lodash.truncate@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==
 
+lodash.wrap@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.wrap/-/lodash.wrap-4.1.1.tgz#9c3770947a821ec6978a93571e1a6179afcd7fc8"
+  integrity sha512-zOvgaTFh+7jBC80FKyoOwMyi8VF3LWAWuakrSXFVTIZAmrJEAYiu7lqwJYDhwh6l5wXuF5aGlzTBymvD+1q6LA==
+
 lodash@^4.17.10, lodash@^4.17.15, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
@@ -6155,6 +6160,13 @@ react-native-codegen@^0.70.5:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-global-font@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-global-font/-/react-native-global-font-1.0.3.tgz#14150a9fff5be9dda0f463b7f12e4a8bc7899885"
+  integrity sha512-yzsFcJhlFn5OAQGuxS/Pa7WBbcOj0H/o2Irve5R5yWcRx4e1k3F3SpZs6F9qfzTKXr9nhjPKtMgMpIQwvbQeVQ==
+  dependencies:
+    lodash.wrap "^4.1.1"
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"

@@ -58,8 +58,8 @@ const LinkItem = ({item, index, navTo}: any) => {
       onPress={() => navTo(item.link)}>
       <Text
         style={{
-          fontSize: 16,
-          fontWeight: '500',
+          fontSize: 18,
+          fontFamily: 'MazzardM-SemiBold',
           margin: 0,
         }}>
         {item.label}

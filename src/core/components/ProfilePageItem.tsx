@@ -4,7 +4,7 @@ import React from 'react'
 const ProfilePageItem = ({label}: any) => {
   return (
     <View style={{marginBottom: 10}}>
-      <Text style={{fontWeight: '600'}}>{label}</Text>
+      <Text style={{fontFamily: 'MazzardM-SemiBold', fontSize: 16}}>{label}</Text>
     </View>
   )
 }

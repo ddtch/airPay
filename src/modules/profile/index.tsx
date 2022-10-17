@@ -44,6 +44,10 @@ export default function ProfileTabRoutes() {
           component={PersonalDetailsScreen}
           options={{
             title: 'Personal details',
+            headerTitleStyle: {
+              fontFamily: 'MazzardM-SemiBold',
+              fontSize: 22,
+            },
             headerRight: () => {
               return (
                 <TouchableOpacity style={{
