@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
 import Swiper from 'react-native-swiper';
 import {mainStyles} from '../../../../styles/main.styles';
@@ -10,6 +10,7 @@ import {MainButton} from '../../../core/components/MainButton';
 import TextBlock from '../../../core/components/TextBlock';
 import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
 import { NAV_TYPE } from '../../../core/models/ScreenTypes';
+const onboardingBg = require('../../../../assets/onboarding-bg.png');
 
 const OnboardingScreen = () => {
   const {t} = useTranslation();
@@ -31,7 +32,9 @@ const OnboardingScreen = () => {
       <Swiper style={styles.wrapper} showsButtons={false} pagingEnabled>
         <View style={styles.slideHolder}>
           <View style={styles.topPart}>
-            <Text>1</Text>
+            
+              <Image source={onboardingBg} resizeMode={'contain'} style={{width: 238, position: 'relative', top: '15%'}}/>
+            
           </View>
           <View style={styles.botPart}>
             <Text style={styles.header}>
@@ -41,7 +44,7 @@ const OnboardingScreen = () => {
           </View>
         </View>
 
-        <View style={styles.slideHolder}>
+        {/* <View style={styles.slideHolder}>
           <View style={styles.topPart}>
             <Text>New slide</Text>
           </View>
@@ -49,7 +52,7 @@ const OnboardingScreen = () => {
             <Text style={styles.header}>You can add more of them</Text>
             <MainButton onPress={() => null} title={t('ok')} />
           </View>
-        </View>
+        </View> */}
       </Swiper>
 
       <ActionSheet ref={actionSheetRef}>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   topPart: {
-    flex: 0.7,
+    flex: 0.6,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
   botPart: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 0.3,
+    flex: 0.4,
     width: '100%',
     backgroundColor: '#fff',
     paddingLeft: 20,
