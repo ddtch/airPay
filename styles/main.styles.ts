@@ -104,4 +104,8 @@ export const mainStyles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  actionSheetContent: {
+    minHeight: 120,
+    padding: 20,
+  }
 });

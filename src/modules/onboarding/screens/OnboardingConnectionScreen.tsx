@@ -19,7 +19,7 @@ const OnboardingConnectionScreen = () => {
   }, []);
 
   const handleConnectSuccess = () => {
-    dispatch(setUser({firstName: 'D_d', lastName: 'Tch'}));
+    dispatch(setUser({firstName: 'D_d', lastName: 'Tch', username: 'username.man'}));
     dispatch(setLoggedInStatus(true))
   }
 

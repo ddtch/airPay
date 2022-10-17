@@ -56,7 +56,7 @@ const OnboardingScreen = () => {
       </Swiper>
 
       <ActionSheet ref={actionSheetRef}>
-        <View style={styles.sheetContent}>
+        <View style={mainStyles.actionSheetContent}>
           <TextBlock variant={'subtitle'}>Please connect with wallet</TextBlock>
           <MainButton
             onPress={handleConnectionProcess}
