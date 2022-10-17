@@ -33,14 +33,14 @@ const TabRoutes = () => {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name={SCREEN_NAME.PaymentsTabRoutes}
         component={PaymentsTabRoutes}
         options={{
           unmountOnBlur: true,
           headerShown: false,
         }}
-      />
+      /> */}
       <Tab.Screen
         name={SCREEN_NAME.NotificationsTabRoutes}
         component={NotificationTabRoutes}

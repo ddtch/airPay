@@ -37,13 +37,13 @@ const TAB_INFO: TabInfoType[] = [
     icon: homeTabIcon,
     labelKey: 'tabs.main',
   },
-  {
-    key: 1,
-    screen: SCREEN_NAME.PaymentsTabRoutes,
-    rootScreen: SCREEN_NAME.PaymentsScreen,
-    icon: paymentsTabIcon,
-    labelKey: 'tabs.payments',
-  },
+  // {
+  //   key: 1,
+  //   screen: SCREEN_NAME.PaymentsTabRoutes,
+  //   rootScreen: SCREEN_NAME.PaymentsScreen,
+  //   icon: paymentsTabIcon,
+  //   labelKey: 'tabs.payments',
+  // },
   {
     key: 2,
     screen: SCREEN_NAME.NotificationsTabRoutes,
@@ -79,15 +79,15 @@ const BottomTabBarCustom = ({
         height: 88,
       }}>
       <TabItem info={TAB_INFO[0]} state={state} isDark={isDark} />
-      <TabItem
+      {/* <TabItem
         info={TAB_INFO[1]}
         state={state}
         isDark={isDark}
         badge={undefined}
-      />
-      <PlusEventButton />
+      /> */}
+      {/* <PlusEventButton /> */}
+      <TabItem info={TAB_INFO[1]} state={state} isDark={isDark} />
       <TabItem info={TAB_INFO[2]} state={state} isDark={isDark} />
-      <TabItem info={TAB_INFO[3]} state={state} isDark={isDark} />
     </Row>
   );
 };

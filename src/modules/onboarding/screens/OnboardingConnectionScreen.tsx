@@ -6,6 +6,7 @@ import LedIndicator from '../../../core/components/LedIndicator';
 import { MainButton } from '../../../core/components/MainButton';
 import {useDispatch} from 'react-redux';
 import {setLoggedInStatus} from '../../../store/auth.slice';
+import { setUser } from '../../../store/user.slice';
 
 const OnboardingConnectionScreen = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -18,6 +19,7 @@ const OnboardingConnectionScreen = () => {
   }, []);
 
   const handleConnectSuccess = () => {
+    dispatch(setUser({firstName: 'D_d', lastName: 'Tch'}));
     dispatch(setLoggedInStatus(true))
   }
 
@@ -33,7 +35,7 @@ const OnboardingConnectionScreen = () => {
           !isLoading && (
             <>
               <LedIndicator connected/>
-              <TextBlock variant={'subtitle'}>Wallet address</TextBlock>
+              <TextBlock variant={'subtitle'}>Wallet address: ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh</TextBlock>
               <MainButton onPress={handleConnectSuccess} title={'ok'}/>
             </>
           )

@@ -2,11 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface UserState {
-  user: any,
+  user: {
+    firstName: string,
+    lastName: string,
+  } | null,
 }
 
 const initialState: UserState = {
-  user: null,
+  user: {firstName: 'John', lastName: 'Doe'},
 }
 
 export const userSlice = createSlice({

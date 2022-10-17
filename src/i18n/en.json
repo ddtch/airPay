@@ -3,6 +3,13 @@
   "loading": "Loading...",
   "login": "Log in",
   "signup": "Sign up",
+  "connect": "Connect",
+  "wallet": "Wallet",
+  "virtual-card": "Virtual Credit Card",
+  "quick-actions": "Quick Actions",
+  "last-payments": "Last Payments",
+  "balance": "Balance",
+  "debt": "Debt",
   "tabs": {
     "main": "Main",
     "payments": "Payments",

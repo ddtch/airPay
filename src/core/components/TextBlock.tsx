@@ -5,13 +5,12 @@ type TextBlockProps = {
   variant: 'title' | 'subtitle' | 'body' | 'caption';
   alignment?: 'left' | 'center' | 'right',
   style?: any;
+  color?: string;
 };
 
-const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, children, alignment, style}) => {
+const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, children, alignment, style, color = '#000'}) => {
   return (
-    <>
-      <Text style={{...styles[variant], ...style, textAlign: alignment ? alignment : 'left'}}>{children}</Text>
-    </>
+    <Text style={{...styles[variant], color, ...style, textAlign: alignment ? alignment : 'left',}}>{children}</Text>
   );
 };
 

@@ -22,19 +22,27 @@ export const MainButton:React.FC<MainButtonProps> = ({onPress, title}) => {
 
 const styles = (theme: IMyTheme) => StyleSheet.create({
   buttonContainer: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: 'rgba(32, 55, 115, 0.73)',
     width: '100%',
     borderRadius: 6,
     display: 'flex',
     alignItems: 'center',
     alignContent: 'center',
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingTop: 8,
+    paddingBottom: 8,
     marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: .25,
+    shadowRadius: 4,
+    elevation: 8,
   },
   btnTitle: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: '600',
   }
 })

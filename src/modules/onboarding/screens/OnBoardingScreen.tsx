@@ -37,8 +37,7 @@ const OnboardingScreen = () => {
             <Text style={styles.header}>
               Now payments are {'\n'}"Smarter" than you think
             </Text>
-            <MainButton onPress={handleLogin} title={t('signup')} />
-            <LightButton onPress={handleLogin} title={t('login')} />
+            <MainButton onPress={handleLogin} title={`${t('connect')} ${t('wallet')}`} />
           </View>
         </View>
 
