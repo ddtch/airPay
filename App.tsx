@@ -20,6 +20,7 @@ import {AirMoneyThemeDark} from './styles/main.styles';
 import {SheetProvider} from 'react-native-actions-sheet';
 import { RootState, store } from './src/store';
 import {useSelector, useDispatch} from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 
 i18n.init();
 
@@ -31,6 +32,10 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(() => {
+    SplashScreen?.hide();
+  }, [])
 
   return (
     <NavigationContainer

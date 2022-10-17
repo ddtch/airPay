@@ -5,11 +5,12 @@ export interface UserState {
   user: {
     firstName: string,
     lastName: string,
+    username: string,
   } | null,
 }
 
 const initialState: UserState = {
-  user: {firstName: 'John', lastName: 'Doe'},
+  user: {firstName: 'John', lastName: 'Doe', username: 'airpayuser.movie'},
 }
 
 export const userSlice = createSlice({

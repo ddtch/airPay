@@ -8,30 +8,33 @@ type MainButtonProps = {
   title: string;
   disabled?: boolean;
   fullWidth?: boolean;
+  noShadows?: boolean;
 }
 
-export const MainButton:React.FC<MainButtonProps> = ({onPress, title}) => {
+const mainColor = 'rgba(32, 55, 115, 0.73)';
+
+export const MainButton:React.FC<MainButtonProps> = ({onPress, title, disabled, noShadows = false}) => {
   const theme = useAppTheme();
-  const mainStPass = styles(theme);
+  const mainStPass = styles(theme, noShadows);
   return (
-    <TouchableOpacity onPress={onPress} style={mainStPass.buttonContainer}>
+    <TouchableOpacity onPress={onPress} disabled={disabled} style={{...mainStPass.buttonContainer, backgroundColor: (disabled ? '#C8D1E1' : mainColor)}}>
       <Text style={mainStPass.btnTitle}>{title}</Text>
     </TouchableOpacity>
   )
 }
 
-const styles = (theme: IMyTheme) => StyleSheet.create({
+const styles = (theme: IMyTheme, nowShadows: boolean) => StyleSheet.create({
   buttonContainer: {
-    backgroundColor: 'rgba(32, 55, 115, 0.73)',
+    backgroundColor: mainColor,
     width: '100%',
     borderRadius: 6,
     display: 'flex',
     alignItems: 'center',
     alignContent: 'center',
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: 12,
+    paddingBottom: 12,
     marginBottom: 10,
-    shadowColor: '#000',
+    shadowColor: nowShadows ? 'transparent' : '#000',
     shadowOffset: {
       width: 0,
       height: 4

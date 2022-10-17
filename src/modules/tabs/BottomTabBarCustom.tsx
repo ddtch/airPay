@@ -45,14 +45,14 @@ const TAB_INFO: TabInfoType[] = [
   //   labelKey: 'tabs.payments',
   // },
   {
-    key: 2,
+    key: 1,
     screen: SCREEN_NAME.NotificationsTabRoutes,
     rootScreen: SCREEN_NAME.NotificationsScreen,
     icon: notificationsTabIcon,
     labelKey: 'tabs.notifications',
   },
   {
-    key: 3,
+    key: 2,
     screen: SCREEN_NAME.ProfileTabRoutes,
     rootScreen: SCREEN_NAME.ProfileScreen,
     icon: profileTabIcon,
@@ -84,8 +84,8 @@ const BottomTabBarCustom = ({
         state={state}
         isDark={isDark}
         badge={undefined}
-      /> */}
-      {/* <PlusEventButton /> */}
+      />
+      <PlusEventButton /> */}
       <TabItem info={TAB_INFO[1]} state={state} isDark={isDark} />
       <TabItem info={TAB_INFO[2]} state={state} isDark={isDark} />
     </Row>

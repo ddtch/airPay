@@ -31,6 +31,10 @@ export enum SCREEN_TYPE {
 
   //PROFILE_TAB
   ProfileScreen = 'ProfileScreen',
+  PersonalDetails = 'PersonalDetails',
+  PaymentMethods = 'PaymentMethods',
+  Languadge = 'Languadge',
+  PersonalNotifications = 'PersonalNotifications'
 }
 
 export const SCREEN_NAME = {...SCREEN_TYPE};

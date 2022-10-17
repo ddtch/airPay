@@ -22,10 +22,10 @@ const CardItem = ({ item, index }: any) => {
           <Text style={styles.text1}>{t('balance')}</Text>
           <Text style={{...styles.text2, color: '#334D8F'}}>{item.balance}{item.currency}</Text>
         </View>
-        <View style={styles.rightPart}>
+        {/* <View style={styles.rightPart}>
           <Text style={styles.text1}>{t('debt')}</Text>
           <Text style={{...styles.text2, color: '#FF5959'}}>{item.debt}{item.currency}</Text>
-        </View>
+        </View> */}
       </View>
     </View>
   );
