@@ -63,6 +63,7 @@ export default function ProfileTabRoutes() {
           name={SCREEN_NAME.PaymentMethods}
           component={PaymentMethodsScreen}
           options={{
+            title: "Payment Methods",
             headerRight: () => {
               return (
                 <TouchableOpacity style={{

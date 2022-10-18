@@ -35,11 +35,11 @@ const userRoutes = [
     link: SCREEN_NAME.Languadge,
     label: 'Languages',
   },
-  {
-    id: 4,
-    link: SCREEN_NAME.PersonalNotifications,
-    label: 'Notifications',
-  },
+  // {
+  //   id: 4,
+  //   link: SCREEN_NAME.PersonalNotifications,
+  //   label: 'Notifications',
+  // },
 ];
 
 const LinkItem = ({item, index, navTo}: any) => {

@@ -14,9 +14,12 @@ const VirtualCardsSlider: React.FC<VirtualCardsSliderProps> = ({cardsData}) => {
     <Swiper
       style={styles.wrapper}
       showsButtons={false}
-      dot={null}
-      showsPagination={false}
-      activeDot={null}>
+      paginationStyle={{
+        marginBottom: 0,
+        position: 'absolute',
+        bottom: 0,
+      }}
+      showsPagination={true}>
       {cardsData.map(el => (
         <CardItem item={el} key={el.id} />
       ))}

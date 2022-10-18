@@ -23,21 +23,21 @@ const styles = StyleSheet.create({
   title: {
     ...commonStyle,
     fontSize: 22,
-    fontFamily: 'MazzardH-Bold'
+    fontFamily: 'MazzardM-Bold'
   },
   subtitle: {
     ...commonStyle,
     fontSize: 20,
-    fontFamily: 'MazzardH-SemiBold'
+    fontFamily: 'MazzardM-SemiBold'
   },
   body: {
     ...commonStyle,
     fontSize: 18,
-    fontFamily: 'MazzardH-Regular'
+    fontFamily: 'MazzardM-Regular'
   },
   caption: {
     ...commonStyle,
     fontSize: 16,
-    fontFamily: 'MazzardH-Regular',
+    fontFamily: 'MazzardM-Regular',
   },
 });

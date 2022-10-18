@@ -1,6 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Platform} from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import AppleWallet from '../../../assets/svg/icon-wallet-ios.svg';
+import GoogleWallet from '../../../assets/svg/icon-wallet-android.svg';
 
 type CardItemProps = {
   item: any;
@@ -15,6 +17,9 @@ const CardItem = ({ item, index }: any) => {
         <View style={styles.leftPart}>
           <Text style={styles.text1}>{item.number}</Text>
           <Text style={styles.text2}>{item.label}</Text>
+        </View>
+        <View style={styles.rightPart}>
+          {Platform.OS === 'ios' ? <AppleWallet width={98} height={30}/> : <GoogleWallet width={98} height={30}/>}
         </View>
       </View>
       <View style={styles.botPart}>
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     alignContent: 'flex-start',
     justifyContent: 'space-between',
-    width: '80%',
+    width: '70%',
   },
   rightPart: {
     display: 'flex',
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     alignContent: 'flex-start',
     justifyContent: 'space-between',
-    width: '20%',
+    width: '30%',
   },
   text1: {
     color: '#8A8A8A',

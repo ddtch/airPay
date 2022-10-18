@@ -281,10 +281,11 @@ const styles = StyleSheet.create({
   currencyInfo: {
     marginBottom: 6,
     color: '#fff',
+    fontFamily: 'MazzardM-Regular',
   },
   cardsBlock: {
-    height: 220,
-    marginBottom: 20,
+    height: 230,
+    marginBottom: 10,
   },
   actionsHolder: {
     paddingHorizontal: 20,
