@@ -27,7 +27,7 @@ export type SCREEN_PARAMS_ALL = {
   [SCREEN_NAME.PersonalDetails]: undefined;
   [SCREEN_NAME.PaymentMethods]: undefined;
   [SCREEN_NAME.Languadge]: undefined;
-  [SCREEN_NAME.PersonalNotifications]: undefined;
+  [SCREEN_NAME.PersonalNotifications]: {hideTitle: boolean};
 };
 
 export type NAV_TYPE = NavigationProp<SCREEN_PARAMS_ALL>;

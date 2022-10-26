@@ -6,35 +6,39 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Dimensions,
 } from 'react-native';
 import React, {Fragment} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../store';
 const mockAva = require('../../../../assets/avatar.jpeg');
-import QBtn from '../../../../assets/svg/icon-question.svg';
+const mockAva1 = require('../../../../assets/avatar1.jpeg');
 import IconLogout from '../../../../assets/svg/icon-logout.svg';
 import {SCREEN_NAME} from '../../../core/constants/SCREEN_NAME';
 import IconChevronRight from '../../../../assets/svg/icon-chevron-right.svg';
 import {useNavigation} from '@react-navigation/native';
 import {NAV_TYPE} from '../../../core/models/ScreenTypes';
 import {mainStyles} from '../../../../styles/main.styles';
+import Swiper from 'react-native-swiper';
+import ProfileBg from '../../../../assets/svg/profile-bg.svg';
+const pbg = require('../../../../assets/svg/pbg-1.png');
 
 const userRoutes = [
   {
     id: 1,
-    link: SCREEN_NAME.PersonalDetails,
-    label: 'Personal details',
+    link: SCREEN_NAME.PaymentMethods,
+    label: 'My wallets',
   },
   {
     id: 2,
-    link: SCREEN_NAME.PaymentMethods,
-    label: 'Payment methods',
-  },
-  {
-    id: 3,
     link: SCREEN_NAME.Languadge,
     label: 'Languages',
   },
+  // {
+  //   id: 3,
+  //   link: SCREEN_NAME.PersonalNotifications,
+  //   label: 'Notifications',
+  // },
   // {
   //   id: 4,
   //   link: SCREEN_NAME.PersonalNotifications,
@@ -75,37 +79,70 @@ const MainProfileScreen = () => {
 
   return (
     <Fragment>
-      <SafeAreaView style={{flex: 0, backgroundColor: '#334D8F'}} />
       <SafeAreaView
         style={{
           flex: 0.35,
-          backgroundColor: '#334D8F',
-          borderBottomRightRadius: 6,
-          borderBottomLeftRadius: 6,
           display: 'flex',
           alignContent: 'center',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <TouchableOpacity style={styles.questionBtn}>
-          <QBtn width={24} height={24} />
-        </TouchableOpacity>
-        <View style={styles.topHolder}>
-          <View style={styles.userDataHolder}>
-            <Text style={{color: '#fff', fontWeight: '700', fontSize: 16}}>
-              {user?.username}
-            </Text>
-            <Image
-              source={mockAva}
-              resizeMethod={'resize'}
-              resizeMode={'contain'}
-              style={styles.avatar}
-            />
-            <Text style={{color: '#fff', fontWeight: '700', fontSize: 18}}>
-              $0.00
-            </Text>
+        <Image
+          source={pbg}
+          style={{
+            height: 275,
+            width: Dimensions.get('screen').width,
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            zIndex: 0,
+          }}
+          resizeMode={'cover'}
+        />
+
+        <Swiper
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            marginTop: 10,
+          }}
+          paginationStyle={{bottom: 40}}
+          dotColor={'#9E9E9E'}
+          activeDotColor={'#fff'}>
+          <View style={styles.topHolder}>
+            <View style={styles.userDataHolder}>
+              <Text style={{color: '#fff', fontWeight: '700', fontSize: 16}}>
+                ddtch.sol
+              </Text>
+              <Image
+                source={mockAva1}
+                resizeMethod={'resize'}
+                resizeMode={'contain'}
+                style={styles.avatar}
+              />
+              <Text style={{color: '#fff', fontWeight: '700', fontSize: 18}}>
+                $9,120.00
+              </Text>
+            </View>
           </View>
-        </View>
+
+          <View style={styles.topHolder}>
+            <View style={styles.userDataHolder}>
+              <Text style={{color: '#fff', fontWeight: '700', fontSize: 16}}>
+                dorado.apt
+              </Text>
+              <Image
+                source={mockAva}
+                resizeMethod={'resize'}
+                resizeMode={'contain'}
+                style={styles.avatar}
+              />
+              <Text style={{color: '#fff', fontWeight: '700', fontSize: 18}}>
+                $172.10
+              </Text>
+            </View>
+          </View>
+        </Swiper>
       </SafeAreaView>
 
       <SafeAreaView
@@ -125,9 +162,14 @@ const MainProfileScreen = () => {
           />
 
           <View style={styles.singleBtn}>
-            <TouchableOpacity style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <IconLogout width={24} height={24} style={{marginRight: 10}}/>
-              <Text style={{color:'#334D8F',fontWeight: '600'}}>Logout</Text>
+            <TouchableOpacity
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <IconLogout width={24} height={24} style={{marginRight: 10}} />
+              <Text style={{color: '#334D8F', fontWeight: '600'}}>Logout</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -165,8 +207,6 @@ const styles = StyleSheet.create({
     height: 100,
     marginVertical: 14,
   },
-  singleBtn: {
-
-  },
+  singleBtn: {},
   panel: {},
 });

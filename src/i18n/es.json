@@ -1,0 +1,22 @@
+{
+  "hello": "Hello",
+  "loading": "Cargando...",
+  "login": "Iniciar",
+  "signup": "Registrarse",
+  "connect": "Conectar",
+  "wallet": "Cartera",
+  "my-wallets": "Mis carteras",
+  "my-cards": "Mis tarjetas",
+  "virtual-card": "Tarjeta de Crédito Virtual",
+  "quick-actions": "Acciones Rápidas",
+  "last-payments": "Transacciones",
+  "balance": "Saldo",
+  "debt": "Deuda",
+  "tabs": {
+    "main": "Principal",
+    "payments": "Pagos",
+    "notifications": "Notificaciones",
+    "profile": "Perfil",
+    "language": "Idioma"
+  }
+}

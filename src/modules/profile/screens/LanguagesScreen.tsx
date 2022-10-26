@@ -2,19 +2,19 @@ import {Image, SafeAreaView, StyleSheet, Text, Touchable, TouchableOpacity, View
 import React from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import { useTranslation } from 'react-i18next';
-const FlagEN = require('../../../../assets/svg/flag-en.png');
-const FlagRu = require('../../../../assets/svg/flag-ru.png');
+import FlagEN from'../../../../assets/svg/flag-en.svg';
+import FlagES from'../../../../assets/svg/flag-es.svg';
 
 const langs = [{
   id: 1,
   title: 'English',
   key: 'en',
-  icon: <Image source={FlagEN} style={{width: 20, height: 20,}} resizeMode={'contain'}/>,
+  icon: <FlagEN width={20} height={20} />,
 }, {
   id: 2,
-  title: 'Русский',
-  key: 'ru',
-  icon: <Image source={FlagRu} style={{width: 20, height: 20,}} resizeMode={'contain'}/>,
+  title: 'Espaniol',
+  key: 'es',
+  icon: <FlagES width={20} height={20} />,
 }]
 
 const LanguagesScreen = () => {

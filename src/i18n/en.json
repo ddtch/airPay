@@ -5,15 +5,18 @@
   "signup": "Sign up",
   "connect": "Connect",
   "wallet": "Wallet",
+  "my-wallets": "My wallets",
+  "my-cards": "My cards",
   "virtual-card": "Virtual Credit Card",
   "quick-actions": "Quick Actions",
-  "last-payments": "Last Payments",
+  "last-payments": "Transactions",
   "balance": "Balance",
   "debt": "Debt",
   "tabs": {
     "main": "Main",
     "payments": "Payments",
     "notifications": "Notifications",
-    "profile": "Profile"
+    "profile": "Profile",
+    "language": "Language"
   }
 }

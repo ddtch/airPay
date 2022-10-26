@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
   title: {
     ...commonStyle,
     fontSize: 22,
-    fontFamily: 'MazzardM-Bold'
+    fontFamily: 'MazzardM-SemiBold'
   },
   subtitle: {
     ...commonStyle,
     fontSize: 20,
-    fontFamily: 'MazzardM-SemiBold'
+    fontFamily: 'MazzardM-Medium'
   },
   body: {
     ...commonStyle,

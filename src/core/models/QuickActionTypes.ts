@@ -1,5 +1,6 @@
 export enum QuickActionTypes {
-  PROMOTION,
+  PROMOTION = 1,
   PAY,
   EARN,
+  MORE,
 }

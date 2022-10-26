@@ -8,12 +8,23 @@ import PaymentMethodsScreen from './screens/PaymentMethodsScreen';
 import LanguagesScreen from './screens/LanguagesScreen';
 import PersonalNotificationsScreen from './screens/PersonalNotificationsScreen';
 import BackBtn from '../../../assets/svg/icon-chevron-left.svg';
-import EditBtn from '../../../assets/svg/icon-edit.svg';
-import { TouchableOpacity } from 'react-native';
+import AddWalletBtn from '../../../assets/svg/icon-add.svg';
+import { Pressable, TouchableOpacity } from 'react-native';
+import MainNotificationsScreen from '../notifications/screens/MainNotificationsScreen';
+import { useDispatch } from 'react-redux';
+import { setWalletConnectMode } from '../../store/info.slice';
+import { useTranslation } from 'react-i18next';
 
 const Profile = createNativeStackNavigator<SCREEN_PARAMS_ALL>();
 
 export default function ProfileTabRoutes() {
+  const {t} = useTranslation();
+  const dispatch = useDispatch();
+
+  const handleAddWallet = () => {
+    dispatch(setWalletConnectMode(true));
+  }
+
   return (
     <Profile.Navigator
       initialRouteName={SCREEN_NAME.ProfileScreen}
@@ -50,11 +61,11 @@ export default function ProfileTabRoutes() {
             },
             headerRight: () => {
               return (
-                <TouchableOpacity style={{
+                <Pressable style={{
                   marginTop: -2,
                 }}>
-                  <EditBtn width={24} height={24}/>
-                </TouchableOpacity>
+                  <AddWalletBtn width={24} height={24}/>
+                </Pressable>
               )
             }
           }}
@@ -63,25 +74,32 @@ export default function ProfileTabRoutes() {
           name={SCREEN_NAME.PaymentMethods}
           component={PaymentMethodsScreen}
           options={{
-            title: "Payment Methods",
+            title: t('my-wallets'),
             headerRight: () => {
               return (
-                <TouchableOpacity style={{
+                <Pressable style={{
                   marginTop: -2,
                 }}>
-                  <EditBtn width={24} height={24}/>
-                </TouchableOpacity>
+                  <AddWalletBtn width={24} height={24} onPress={() => handleAddWallet()}/>
+                </Pressable>
               )
             }
           }}
         />
         <Profile.Screen
           name={SCREEN_NAME.Languadge}
+          options={{
+            title: t('tabs.language')
+          }}
           component={LanguagesScreen}
         />
         <Profile.Screen
           name={SCREEN_NAME.PersonalNotifications}
-          component={PersonalNotificationsScreen}
+          component={MainNotificationsScreen}
+          initialParams={{hideTitle: true}}
+          options={{
+            headerTitle: t('tabs.notifications')
+          }}
         />
       </Profile.Group>
     </Profile.Navigator>

@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
@@ -8,39 +8,63 @@ import {mainStyles} from '../../../../styles/main.styles';
 import {LightButton} from '../../../core/components/LightButton';
 import {MainButton} from '../../../core/components/MainButton';
 import TextBlock from '../../../core/components/TextBlock';
-import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
-import { NAV_TYPE } from '../../../core/models/ScreenTypes';
+import {SCREEN_NAME} from '../../../core/constants/SCREEN_NAME';
+import {NAV_TYPE} from '../../../core/models/ScreenTypes';
+import ProfileBg from '../../../../assets/svg/profile-bg.svg';
+import {mockWallets} from '../../profile/screens/PaymentMethodsScreen';
+import WalletListItem from '../../../core/components/WalletListItem';
+import {useDispatch} from 'react-redux';
+import {setWalletConnectMode} from '../../../store/info.slice';
+import WalletConnectionsActionSheet from '../../../core/components/WalletConnectionsActionSheet';
+import { setUser } from '../../../store/user.slice';
+import { setLoggedInStatus } from '../../../store/auth.slice';
+
 const onboardingBg = require('../../../../assets/onboarding-bg.png');
+const pbg = require('../../../../assets/svg/pbg-1.png');
 
 const OnboardingScreen = () => {
   const {t} = useTranslation();
+  const dispatch = useDispatch();
   const {navigate} = useNavigation<NAV_TYPE>();
-  const actionSheetRef = useRef<ActionSheetRef>(null);
 
   const handleLogin = () => {
-    actionSheetRef?.current?.show();
+    dispatch(setWalletConnectMode(true));
   };
 
   const handleConnectionProcess = () => {
-    actionSheetRef?.current?.hide();
-    navigate(SCREEN_NAME.OnboardingConnect);
+    setTimeout(() => {
+      dispatch(setLoggedInStatus(true));
+      dispatch(
+        setUser({firstName: 'D_d', lastName: 'Tch', username: 'username.man'}),
+      );
+    }, 400);
   };
 
   return (
-    // <SafeAreaView style={mainStyles.container}>
     <View style={styles.content}>
       <Swiper style={styles.wrapper} showsButtons={false} pagingEnabled>
         <View style={styles.slideHolder}>
           <View style={styles.topPart}>
-            
-              <Image source={onboardingBg} resizeMode={'contain'} style={{width: 238, position: 'relative', top: '15%'}}/>
-            
+            <Image
+              source={pbg}
+              resizeMode={'cover'}
+              style={{position: 'absolute', top: 0, left: 0}}
+            />
+            <Image
+              source={onboardingBg}
+              resizeMode={'contain'}
+              style={{width: 238, position: 'relative', top: '15.5%'}}
+            />
           </View>
           <View style={styles.botPart}>
             <Text style={styles.header}>
               Now payments are {'\n'}"Smarter" than you think
             </Text>
-            <MainButton onPress={handleLogin} disabled={false} title={`${t('connect')} ${t('wallet')}`} />
+            <MainButton
+              onPress={handleLogin}
+              disabled={false}
+              title={`${t('connect')} ${t('wallet')}`}
+            />
           </View>
         </View>
 
@@ -55,17 +79,11 @@ const OnboardingScreen = () => {
         </View> */}
       </Swiper>
 
-      <ActionSheet ref={actionSheetRef}>
-        <View style={mainStyles.actionSheetContent}>
-          <TextBlock variant={'subtitle'}>Please connect with wallet</TextBlock>
-          <MainButton
-            onPress={handleConnectionProcess}
-            title={'Martian Wallet'}
-          />
-        </View>
-      </ActionSheet>
+      <WalletConnectionsActionSheet
+        walletsList={mockWallets}
+        onWalletConnected={handleConnectionProcess}
+      />
     </View>
-    // </SafeAreaView>
   );
 };
 

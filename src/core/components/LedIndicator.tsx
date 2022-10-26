@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   indicator: {
     width: 8,

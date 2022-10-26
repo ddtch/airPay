@@ -1,19 +1,29 @@
-import {SafeAreaView, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {Fragment} from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../store';
-import StatusIcon from '../../../../assets/svg/icon-action1.svg';
 import dayjs from 'dayjs';
 import isYesterday from 'dayjs/plugin/isYesterday';
 import FilterIcon from '../../../../assets/svg/icon-settings.svg';
 import TextBlock from '../../../core/components/TextBlock';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import IconAptos from '../../../../assets/svg/icon-aptos.svg';
+import ItemIconMcDonalds from '../../../../assets/svg/transaction-logo-3.svg';
 dayjs.extend(isYesterday);
 
-const MainNotificationsScreen = () => {
+const MainNotificationsScreen = ({ navigation, route }: any) => {
   const {notificationsList} = useSelector((state: RootState) => state.info);
   const {t} = useTranslation();
+  
   const getDateFormat = (date: number): string => {
     return dayjs(date).isYesterday()
       ? 'Yesterday'
@@ -24,32 +34,78 @@ const MainNotificationsScreen = () => {
   return (
     <SafeAreaView style={mainStyles.container}>
       <View style={mainStyles.content}>
-        <View style={styles.panel}>
-          <TextBlock variant={'title'} style={{marginBottom: 0}}>{t('tabs.notifications')}</TextBlock>
+        {!route?.params?.hideTitle && <View style={styles.panel}>
+          <TextBlock variant={'title'} style={{marginBottom: 0}}>
+            {t('tabs.notifications')}
+          </TextBlock>
           <TouchableOpacity style={styles.filtersBtn}>
             <FilterIcon width={24} height={24} />
           </TouchableOpacity>
-        </View>
+        </View>}
         <ScrollView>
-          {notificationsList.map(el => (
+          {notificationsList.map((el, index) => (
             <Fragment key={el.id}>
               <View
                 key={el.id}
                 style={{
-                  ...styles.notifyItemHolder,
-                  borderTopRightRadius: !el.isRead ? 0 : 6,
-                  borderBottomRightRadius: !el.isRead ? 0 : 6,
+                  borderTopWidth: 1,
+                  borderBottomWidth:
+                    index >= 0
+                      ? index === notificationsList.length - 1
+                        ? 1
+                        : 0
+                      : 1,
+                  borderColor: 'rgba(0,0,0,.15)',
                 }}>
-                <View style={styles.messageContainer}>
-                  <Text style={{...styles.text, fontWeight: !el.isRead ? '500' : '400',}}>{el.text}</Text>
-                  <Text style={styles.date}>{getDateFormat(el.date)}</Text>
-                </View>
-
-                {!el.isRead && (
-                  <View style={styles.statusHolder}>
-                    <StatusIcon width={24} height={24} />
+                <View
+                  style={{
+                    paddingVertical: 10,
+                    display: 'flex',
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                  }}>
+                  
+                  <View style={{
+                    alignContent: 'flex-start',
+                    marginBottom: 'auto',
+                    marginTop: 8,
+                    width: 8,
+                    height: 8,
+                    backgroundColor: !el.isRead ? '#0C6CDD' : 'transparent',
+                    borderRadius: 8
+                  }}/>
+                  <View style={{marginLeft: 10}}>
+                    <Text
+                      style={{
+                        fontWeight: '500',
+                        fontFamily: 'MazzardM-Medium',
+                        fontSize: 16,
+                        marginBottom: 8,
+                      }}>
+                      {el.title}
+                    </Text>
+                    <Text style={{fontWeight: '400', fontFamily: 'MazzardM-Medium', fontSize: 12, opacity:.7}}>
+                      {dayjs(el.time).format(`MMM DD, YYYY - HH:mm A`)}
+                    </Text>
                   </View>
-                )}
+                  <View style={{
+                    width: 50,
+                    height: 50,
+                    borderWidth: 1,
+                    borderColor: 'rgba(0,0,0,.15)',
+                    borderRadius: 50,
+                    alignContent: 'flex-end',
+                    marginLeft: 'auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    {!el.merchant && <IconAptos width={26} height={26} fill={'black'} color={'black'}/>}
+                    {el.merchant && <ItemIconMcDonalds width={26} height={26}/>}
+                  </View>
+                </View>
               </View>
             </Fragment>
           ))}
@@ -105,5 +161,5 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     marginBottom: 30,
   },
-  filtersBtn: {}
+  filtersBtn: {},
 });

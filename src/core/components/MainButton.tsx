@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { IMyTheme } from '../../../styles/main.styles';
 import useAppTheme from '../hooks/context/UseAppTheme';
+import ProfileBg from '../../../assets/svg/profile-bg.svg';
 
 type MainButtonProps = {
   onPress: () => void;
@@ -18,6 +19,7 @@ export const MainButton:React.FC<MainButtonProps> = ({onPress, title, disabled, 
   const mainStPass = styles(theme, noShadows);
   return (
     <TouchableOpacity onPress={onPress} disabled={disabled} style={{...mainStPass.buttonContainer, backgroundColor: (disabled ? '#C8D1E1' : mainColor)}}>
+      <ProfileBg style={{position: 'absolute', left: -26, top: 0}} width={400} height={240}/>
       <Text style={mainStPass.btnTitle}>{title}</Text>
     </TouchableOpacity>
   )
@@ -25,6 +27,7 @@ export const MainButton:React.FC<MainButtonProps> = ({onPress, title, disabled, 
 
 const styles = (theme: IMyTheme, nowShadows: boolean) => StyleSheet.create({
   buttonContainer: {
+    position: 'relative',
     backgroundColor: mainColor,
     width: '100%',
     borderRadius: 6,
@@ -34,6 +37,7 @@ const styles = (theme: IMyTheme, nowShadows: boolean) => StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12,
     marginBottom: 10,
+    overflow: 'hidden',
     shadowColor: nowShadows ? 'transparent' : '#000',
     shadowOffset: {
       width: 0,

@@ -8,7 +8,7 @@ export interface AuthState {
 
 const initialState: AuthState = {
   loggedIn: false,
-  walletConnected: false,
+  walletConnected: true,
 };
 
 export const authSlice = createSlice({

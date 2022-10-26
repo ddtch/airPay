@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import dayjs from 'dayjs';
+const card1 = require('../../assets/img-card-1.png');
+const card2 = require('../../assets/img-card-2.png');
 
 export interface InfoState {
   devMode: boolean;
   cardsData: any[];
   payments: any[];
   notificationsList: any[];
+  walletConnectMode: boolean;
 }
 
 const initialState: InfoState = {
@@ -18,7 +21,8 @@ const initialState: InfoState = {
       label: 'LIGHT',
       balance: 13.20,
       debt: 0.20,
-      currency: 'ß'
+      currency: 'ß',
+      cardImage: card1,
     },
     {
       id: 2,
@@ -26,39 +30,37 @@ const initialState: InfoState = {
       label: 'LIGHT',
       balance: 1.20,
       debt: 0.00,
-      currency: 'µ'
-    },
-    {
-      id: 3,
-      number: 'A8716GYA1',
-      label: 'BOLD',
-      balance: 123.20,
-      debt: 1.20,
-      currency: 'ß'
+      currency: 'µ',
+      cardImage: card2,
     },
   ],
   payments: [
-    {
-      id: 1,
-      title: 'Light',
-      amount: 28.10,
-      currency: '$',
-    }
   ],
   notificationsList: [
     {
       id: 1,
       date: +new Date(),
+      title: 'Your wallet has been connected',
       text: 'Smart card’s balance is about to get to 0. Please, make your payment.',
       isRead: false,
     },
     {
       id: 2,
       date: dayjs().subtract(1, 'day').valueOf(),
+      title: 'Operations was approoved',
+      text: 'Your balance has been incresed.',
+      isRead: true,
+      merchant: true,
+    },
+    {
+      id: 3,
+      date: dayjs().subtract(1, 'day').valueOf(),
+      title: 'Ypur information is updated',
       text: 'Your balance has been incresed.',
       isRead: true,
     }
-  ]
+  ],
+  walletConnectMode: false,
 };
 
 export const infoSlice = createSlice({
@@ -68,12 +70,20 @@ export const infoSlice = createSlice({
     setDevMode: (state, action: PayloadAction<boolean>) => {
       state.devMode = action.payload;
     },
+    setTransactionsList: (state, action: PayloadAction<any[]>) => {
+      state.payments = action.payload;
+    },
+    setWalletConnectMode: (state, action: PayloadAction<boolean>) => {
+      state.walletConnectMode = action.payload;
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
   setDevMode,
+  setTransactionsList,
+  setWalletConnectMode,
 } = infoSlice.actions;
 
 export default infoSlice.reducer;
