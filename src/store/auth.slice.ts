@@ -7,7 +7,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  loggedIn: false,
+  loggedIn: true,
   walletConnected: true,
 };
 

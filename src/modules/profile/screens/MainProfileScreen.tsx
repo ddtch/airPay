@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  Platform,
 } from 'react-native';
 import React, {Fragment} from 'react';
 import {useSelector} from 'react-redux';
@@ -53,9 +54,11 @@ const LinkItem = ({item, index, navTo}: any) => {
         backgroundColor: '#F8F8FA',
         padding: 15,
         display: 'flex',
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        alignContent: 'center',
         marginBottom: 20,
         borderRadius: 6,
       }}
@@ -65,6 +68,7 @@ const LinkItem = ({item, index, navTo}: any) => {
           fontSize: 18,
           fontFamily: 'MazzardM-SemiBold',
           margin: 0,
+          color: '#000',
         }}>
         {item.label}
       </Text>
@@ -78,33 +82,41 @@ const MainProfileScreen = () => {
   const {navigate} = useNavigation<NAV_TYPE>();
 
   return (
-    <Fragment>
-      <SafeAreaView
+    <SafeAreaView
+      style={{
+        display: 'flex',
+        flex: 1, //(Dimensions.get('screen').height / 2.10) / Dimensions.get('screen').height,
+        flexDirection: 'column',
+      }}>
+      <View
         style={{
-          flex: 0.35,
-          display: 'flex',
-          alignContent: 'center',
-          alignItems: 'center',
-          justifyContent: 'center',
+          position: 'absolute',
+          width: Dimensions.get('screen').width,
+          
+          height: Dimensions.get('screen').height / 3,
+          overflow: 'hidden',
+          left: 0,
+          top: -20,
+          zIndex: 0,
+          borderBottomRightRadius: 20,
+          borderBottomLeftRadius: 20,
         }}>
-        <Image
-          source={pbg}
-          style={{
-            height: 275,
-            width: Dimensions.get('screen').width,
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            zIndex: 0,
-          }}
-          resizeMode={'cover'}
+        <ProfileBg
+          style={{position: 'absolute', top: Platform.OS === 'ios' ? '-96%' : '-100%'}}
+          width={Dimensions.get('screen').width}
+          height={Dimensions.get('screen').height}
         />
+      </View>
 
+      <View
+        style={{
+          height: '100%',
+          maxHeight: 244,
+        }}>
         <Swiper
           style={{
             position: 'relative',
             zIndex: 2,
-            marginTop: 10,
           }}
           paginationStyle={{bottom: 40}}
           dotColor={'#9E9E9E'}
@@ -143,38 +155,36 @@ const MainProfileScreen = () => {
             </View>
           </View>
         </Swiper>
-      </SafeAreaView>
+      </View>
 
-      <SafeAreaView
-        style={{
-          flex: 0.65,
-        }}>
-        <View style={mainStyles.content}>
-          <FlatList
-            data={userRoutes}
-            renderItem={({item, index}) => (
-              <LinkItem
-                item={item}
-                index={index}
-                navTo={(link: any) => navigate(link)}
-              />
-            )}
-          />
+      <View style={{...mainStyles.content, paddingVertical: 0}}>
+        <FlatList
+          style={{
+            width: '100%',
+          }}
+          data={userRoutes}
+          renderItem={({item, index}) => (
+            <LinkItem
+              item={item}
+              index={index}
+              navTo={(link: any) => navigate(link)}
+            />
+          )}
+        />
 
-          <View style={styles.singleBtn}>
-            <TouchableOpacity
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <IconLogout width={24} height={24} style={{marginRight: 10}} />
-              <Text style={{color: '#334D8F', fontWeight: '600'}}>Logout</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.singleBtn}>
+          <TouchableOpacity
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <IconLogout width={24} height={24} style={{marginRight: 10}} />
+            <Text style={{color: '#334D8F', fontWeight: '600'}}>Logout</Text>
+          </TouchableOpacity>
         </View>
-      </SafeAreaView>
-    </Fragment>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -186,12 +196,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  questionBtn: {
-    position: 'absolute',
-    zIndex: 2,
-    top: 20,
-    left: 20,
   },
   topHolder: {
     display: 'flex',
@@ -205,8 +209,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     width: 100,
     height: 100,
-    marginVertical: 14,
+    marginVertical: 16,
   },
-  singleBtn: {},
+  singleBtn: {
+    marginBottom: 20,
+  },
   panel: {},
 });

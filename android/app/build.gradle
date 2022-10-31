@@ -212,12 +212,22 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storeFile file('airpay_tomer.keystore')
+            storePassword 'wasd12wasd'
+            keyAlias 'airpay_tomer'
+            keyPassword 'wasd12wasd'
+        }
+        release {
+            // def keystorePropertiesFile = rootProject.file("keystore.properties");
+            // def keystoreProperties = new Properties()
+            // keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            storeFile file('airpay_tomer.keystore')
+            storePassword 'wasd12wasd'
+            keyAlias 'airpay_tomer'
+            keyPassword 'wasd12wasd'
         }
     }
+    namespace 'com.airdollar'
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -225,9 +235,9 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 

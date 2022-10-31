@@ -78,7 +78,7 @@ export const mainStyles = StyleSheet.create({
   content: {
     flex: 1,
     flexDirection: 'column',
-    padding: 22,
+    padding: 20,
     // backgroundColor: 'red'
   },
   containerCalendarIsExpand: {

@@ -1,4 +1,4 @@
-import {Image, SafeAreaView, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
+import {Image, Platform, SafeAreaView, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +23,7 @@ const LanguagesScreen = () => {
   
   return (
     <SafeAreaView style={mainStyles.container}>
+      {Platform.OS === 'android' && <View style={{height: 50}}/>}
       <View style={mainStyles.content}>
         {langs.map(el => <TouchableOpacity style={styles.langItem} key={el.id} onPress={() => i18n.changeLanguage(el.key)}>
           {el.icon}

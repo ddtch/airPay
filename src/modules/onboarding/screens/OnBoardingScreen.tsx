@@ -2,20 +2,13 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
 import Swiper from 'react-native-swiper';
 import {mainStyles} from '../../../../styles/main.styles';
-import {LightButton} from '../../../core/components/LightButton';
 import {MainButton} from '../../../core/components/MainButton';
-import TextBlock from '../../../core/components/TextBlock';
-import {SCREEN_NAME} from '../../../core/constants/SCREEN_NAME';
 import {NAV_TYPE} from '../../../core/models/ScreenTypes';
-import ProfileBg from '../../../../assets/svg/profile-bg.svg';
-import {mockWallets} from '../../profile/screens/PaymentMethodsScreen';
-import WalletListItem from '../../../core/components/WalletListItem';
 import {useDispatch} from 'react-redux';
 import {setWalletConnectMode} from '../../../store/info.slice';
-import WalletConnectionsActionSheet from '../../../core/components/WalletConnectionsActionSheet';
+import WalletConnectionsActionSheet, { mockWallets } from '../../../core/components/WalletConnectionsActionSheet';
 import { setUser } from '../../../store/user.slice';
 import { setLoggedInStatus } from '../../../store/auth.slice';
 
@@ -35,7 +28,7 @@ const OnboardingScreen = () => {
     setTimeout(() => {
       dispatch(setLoggedInStatus(true));
       dispatch(
-        setUser({firstName: 'D_d', lastName: 'Tch', username: 'username.man'}),
+        setUser({firstName: 'David', lastName: 'Cholariia', username: 'username.man'}),
       );
     }, 400);
   };

@@ -12,7 +12,7 @@ const blocks = [
     id: 1,
     title: 'Total',
     titleIcon: <USDCIcon width={14} height={14} style={{marginRight: 2}}/>,
-    amount: 16420,
+    amount: 9849,
     type: EBalanceBlockType.total,
   },
   {

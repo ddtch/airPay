@@ -1,4 +1,5 @@
 import {
+  Platform,
   SafeAreaView,
   StyleSheet,
   View,
@@ -14,30 +15,6 @@ import PhantomIcon from '../../../../assets/svg/icon-phantom-wallet.svg';
 import SolIcon from '../../../../assets/svg/icon-sol-wallet.svg';
 import WalletListItem from '../../../core/components/WalletListItem';
 import WalletConnectionsActionSheet from '../../../core/components/WalletConnectionsActionSheet';
-
-export const mockWallets = [
-  {
-    id: 1,
-    title: 'Martian wallet',
-    connected: false,
-    address: 'B6E7ffe574DB6E7f6414d301c74f4be69E949080F9F30',
-    icon: <MartianIcon width={28} height={28} />,
-  },
-  {
-    id: 2,
-    title: 'Phantom',
-    connected: false,
-    address: '0xfe574DB6E7f6414d301c74f4be69E949080F9F30',
-    icon: <PhantomIcon width={28} height={28} />,
-  },
-  {
-    id: 4,
-    title: 'Folflare',
-    connected: false,
-    icon: <SolIcon width={28} height={28} />,
-  },
-];
-
 
 export const mcWallets = [
   {
@@ -70,12 +47,12 @@ const PaymentMethodsScreen = () => {
   );
 
   const handleWalletConnected = (updatedWallets: any[]) => {
-    console.log(updatedWallets)
     setFilteredWallets(updatedWallets);
   };
 
   return (
-    <SafeAreaView style={mainStyles.container}>
+    <SafeAreaView style={{...mainStyles.container}}>
+      {Platform.OS === 'android' && <View style={{height: 50}}/>}
       <View style={{...mainStyles.content, paddingHorizontal: 0}}>
         <View style={{marginBottom: 30}}>
           {filteredWallets.map(

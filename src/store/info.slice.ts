@@ -39,23 +39,23 @@ const initialState: InfoState = {
   notificationsList: [
     {
       id: 1,
-      date: +new Date(),
+      date: dayjs().valueOf(),
       title: 'Your wallet has been connected',
       text: 'Smart card’s balance is about to get to 0. Please, make your payment.',
       isRead: false,
     },
     {
       id: 2,
-      date: dayjs().subtract(1, 'day').valueOf(),
-      title: 'Operations was approoved',
+      date: dayjs().subtract(2, 'day').add(1, 'hour').valueOf(),
+      title: 'Transaction is approoved',
       text: 'Your balance has been incresed.',
       isRead: true,
       merchant: true,
     },
     {
       id: 3,
-      date: dayjs().subtract(1, 'day').valueOf(),
-      title: 'Ypur information is updated',
+      date: dayjs().subtract(3, 'day').subtract(1, 'hour').add(21, 'minutes').valueOf(),
+      title: 'Your information is updated',
       text: 'Your balance has been incresed.',
       isRead: true,
     }

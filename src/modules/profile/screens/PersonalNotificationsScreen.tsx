@@ -1,7 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import React from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const PersonalNotificationsScreen = () => {
   return (

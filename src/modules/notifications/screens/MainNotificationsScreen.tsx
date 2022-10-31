@@ -46,7 +46,6 @@ const MainNotificationsScreen = ({ navigation, route }: any) => {
           {notificationsList.map((el, index) => (
             <Fragment key={el.id}>
               <View
-                key={el.id}
                 style={{
                   borderTopWidth: 1,
                   borderBottomWidth:
@@ -87,7 +86,7 @@ const MainNotificationsScreen = ({ navigation, route }: any) => {
                       {el.title}
                     </Text>
                     <Text style={{fontWeight: '400', fontFamily: 'MazzardM-Medium', fontSize: 12, opacity:.7}}>
-                      {dayjs(el.time).format(`MMM DD, YYYY - HH:mm A`)}
+                      {dayjs(el.date).format(`MMM DD, YYYY - HH:mm A`)}
                     </Text>
                   </View>
                   <View style={{

@@ -77,6 +77,14 @@ const BottomTabBarCustom = ({
         paddingTop: PADDING_OUT,
         flexWrap: 'nowrap',
         height: 88,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: -2,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
+        elevation: 2,
       }}>
       <TabItem info={TAB_INFO[0]} state={state} isDark={isDark} />
       {/* <TabItem

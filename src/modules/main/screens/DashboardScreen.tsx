@@ -8,7 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {Fragment, useEffect, useState, useTransition} from 'react';
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useTransition,
+} from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../store';
@@ -23,6 +31,7 @@ import ActionMore from '../../../../assets/svg/icon-more.svg';
 import FlashIcon from '../../../../assets/svg/icon-flash.svg';
 import ProgressBar from '../../../core/components/ProgressBar';
 import Balances from '../../../core/components/Balances';
+// import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 
 import ItemIconFigma from '../../../../assets/svg/transaction-logo-1.svg';
 import ItemIconAmazon from '../../../../assets/svg/transaction-logo-2.svg';
@@ -126,11 +135,20 @@ const PaymentsList: React.FC<PaymentsListProps> = ({payments}) => {
               justifyContent: 'flex-start',
             }}>
             {item.icon}
-            <View style={{marginLeft: 10,}}>
-                <Text style={{fontWeight: '400', fontSize: 14, marginBottom: 8}}>{item.title}</Text>
-                <Text style={{fontWeight: '400', fontSize: 14}}>{item.time}</Text>
+            <View style={{marginLeft: 10}}>
+              <Text style={{fontWeight: '400', fontSize: 14, marginBottom: 8}}>
+                {item.title}
+              </Text>
+              <Text style={{fontWeight: '400', fontSize: 14}}>{item.time}</Text>
             </View>
-            <Text style={{fontWeight: '600', fontSize: 16, justifyContent: 'flex-end', display:'flex', marginLeft: 'auto'}}>
+            <Text
+              style={{
+                fontWeight: '600',
+                fontSize: 16,
+                justifyContent: 'flex-end',
+                display: 'flex',
+                marginLeft: 'auto',
+              }}>
               ${item.amount}
             </Text>
           </View>
@@ -144,6 +162,11 @@ const DashboardScreen = () => {
   const [transactionsList, setTransactionsList] = useState<any[]>([]);
   const {user} = useSelector((state: RootState) => state.user);
   const {cardsData} = useSelector((state: RootState) => state.info);
+  // const bottomSheetRef = useRef<BottomSheet>(null);
+  const snapPoints = useMemo(() => ['65%', '8%'], []);
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+  }, []);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -154,7 +177,7 @@ const DashboardScreen = () => {
       {
         id: 1,
         title: 'Figma',
-        amount: 14.10,
+        amount: 14.1,
         time: '04:43PM',
         currency: '$',
         icon: <ItemIconFigma />,
@@ -167,89 +190,80 @@ const DashboardScreen = () => {
         currency: '$',
         icon: <ItemIconAmazon />,
       },
-    ]);
+  ]);
   }, []);
 
   return (
-    <Fragment>
-      <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-        <ScrollView>
-          <View style={styles.userInfo}>
-            <View style={styles.personal}>
-              <View style={styles.avatar}>
-                <Image
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 40,
-                    marginLeft: -1,
-                    marginTop: -1,
-                  }}
-                  source={mockAva}
-                  resizeMode={'contain'}
-                />
-              </View>
-            </View>
-
-            <View style={styles.info}>
-              <View style={styles.infoTexts}>
-                <Text style={styles.names}>
-                  {user?.firstName + ' ' + user?.lastName}
-                </Text>
-
-                <Text>32/100</Text>
-              </View>
-              <ProgressBar />
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
+        <View style={styles.userInfo}>
+          <View style={styles.personal}>
+            <View style={styles.avatar}>
+              <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50,
+                  marginLeft: -1,
+                  marginTop: -1,
+                }}
+                source={mockAva}
+                resizeMode={'contain'}
+              />
             </View>
           </View>
 
-          <View style={{paddingHorizontal: 20, marginBottom: 20}}>
-            <Balances />
-          </View>
+          <View style={styles.info}>
+            <View style={styles.infoTexts}>
+              <Text style={styles.names}>
+                {user?.firstName + ' ' + user?.lastName}
+              </Text>
 
-          <View style={styles.cardsBlock}>
-            <TextBlock
-              variant={'title'}
-              color={'#000'}
-              style={{paddingHorizontal: 20}}>
-              {t('my-cards')}
+              <Text>32/100</Text>
+            </View>
+            <ProgressBar />
+          </View>
+        </View>
+
+        <View style={{paddingHorizontal: 20, marginBottom: 30}}>
+          <Balances />
+        </View>
+
+        <View style={styles.cardsBlock}>
+          <TextBlock
+            variant={'title'}
+            color={'#000'}
+            style={{paddingHorizontal: 20}}>
+            {t('my-cards')}
+          </TextBlock>
+          <VirtualCardsSlider cardsData={cardsData} />
+        </View>
+
+        <View style={styles.actionsHolder}>
+          <TextBlock variant={'title'} color={'#000'} style={{marginBottom: 20}}>
+            {t('quick-actions')}
+          </TextBlock>
+          <ActionsBlock actionSelected={handleActionSelected} />
+        </View>
+      </ScrollView>
+      {/* <BottomSheet
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPoints}
+        contentHeight={1}
+        onChange={handleSheetChanges}>
+        <View style={styles.transactionsContentHolder}>
+          <View style={styles.transactionsPanel}>
+            <TextBlock variant={'title'} style={{marginBottom: 0}}>
+              {t('transactions')}
             </TextBlock>
-            <VirtualCardsSlider cardsData={cardsData} />
+            <Text style={styles.textBtn}>All</Text>
           </View>
 
-          <View style={styles.actionsHolder}>
-            <TextBlock variant={'title'} color={'#000'}>
-              {t('quick-actions')}
-            </TextBlock>
-            <ActionsBlock actionSelected={handleActionSelected} />
-          </View>
-
-          <View style={styles.lastPayments}>
-            <View
-              style={{
-                height: 4,
-                borderRadius: 4,
-                backgroundColor: '#000',
-                opacity: 0.5,
-                marginBottom: 20,
-                marginTop: 4,
-                width: 40,
-                display: 'flex',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}/>
-            <View style={styles.paymentsPanel}>
-              <TextBlock variant={'title'} style={{marginBottom: 0}}>
-                {t('last-payments')}
-              </TextBlock>
-              <Text style={styles.textBtn}>All</Text>
-            </View>
-
-            <PaymentsList payments={transactionsList} />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
+          <PaymentsList payments={transactionsList} />
+        </View>
+      </BottomSheet> */}
+    </SafeAreaView>
   );
 };
 
@@ -282,6 +296,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
     padding: 20,
+    marginTop: 20,
   },
   textBtn: {
     alignSelf: 'center',
@@ -297,9 +312,9 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   avatar: {
-    width: 38,
-    height: 38,
-    borderRadius: 38,
+    width: 48,
+    height: 48,
+    borderRadius: 48,
     overflow: 'hidden',
   },
   info: {
@@ -327,36 +342,26 @@ const styles = StyleSheet.create({
   },
   cardsBlock: {
     height: 230,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   actionsHolder: {
     paddingHorizontal: 20,
+    marginBottom: 60,
   },
-  paymentsPanel: {
+  transactionsPanel: {
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
     alignItems: 'flex-start',
     alignContent: 'flex-start',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 30,
   },
-  lastPayments: {
+  transactionsContentHolder: {
     display: 'flex',
     flexDirection: 'column',
-    borderTopRightRadius: 8,
-    borderTopLeftRadius: 8,
-    padding: 20,
-    marginTop: 20,
+    paddingHorizontal: 20,
     backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: -4,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 4,
-    elevation: 8,
   },
   filterBtnHolder: {},
 });
