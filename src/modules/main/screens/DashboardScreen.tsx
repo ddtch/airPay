@@ -1,5 +1,4 @@
 import {
-  FlatList,
   Image,
   SafeAreaView,
   ScrollView,
@@ -9,13 +8,11 @@ import {
   View,
 } from 'react-native';
 import React, {
-  Fragment,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
-  useTransition,
 } from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import {useDispatch, useSelector} from 'react-redux';
@@ -28,10 +25,9 @@ import ActionPromo from '../../../../assets/svg/icon-promo.svg';
 import ActionPay from '../../../../assets/svg/icon-pay.svg';
 import ActionEarn from '../../../../assets/svg/icon-earn.svg';
 import ActionMore from '../../../../assets/svg/icon-more.svg';
-import FlashIcon from '../../../../assets/svg/icon-flash.svg';
 import ProgressBar from '../../../core/components/ProgressBar';
 import Balances from '../../../core/components/Balances';
-// import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 
 import ItemIconFigma from '../../../../assets/svg/transaction-logo-1.svg';
 import ItemIconAmazon from '../../../../assets/svg/transaction-logo-2.svg';
@@ -162,7 +158,7 @@ const DashboardScreen = () => {
   const [transactionsList, setTransactionsList] = useState<any[]>([]);
   const {user} = useSelector((state: RootState) => state.user);
   const {cardsData} = useSelector((state: RootState) => state.info);
-  // const bottomSheetRef = useRef<BottomSheet>(null);
+  const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['65%', '8%'], []);
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
@@ -246,7 +242,7 @@ const DashboardScreen = () => {
           <ActionsBlock actionSelected={handleActionSelected} />
         </View>
       </ScrollView>
-      {/* <BottomSheet
+      <BottomSheet
         ref={bottomSheetRef}
         index={1}
         snapPoints={snapPoints}
@@ -262,7 +258,7 @@ const DashboardScreen = () => {
 
           <PaymentsList payments={transactionsList} />
         </View>
-      </BottomSheet> */}
+      </BottomSheet>
     </SafeAreaView>
   );
 };
