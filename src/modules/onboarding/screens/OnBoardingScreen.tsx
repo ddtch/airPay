@@ -51,7 +51,7 @@ const OnboardingScreen = () => {
           </View>
           <View style={styles.botPart}>
             <Text style={styles.header}>
-              Now payments are {'\n'}"Smarter" than you think
+              Instantly pay at any store{"\n"}with your on-chain tokens
             </Text>
             <MainButton
               onPress={handleLogin}
