@@ -159,7 +159,8 @@ const DashboardScreen = () => {
   const {user} = useSelector((state: RootState) => state.user);
   const {cardsData} = useSelector((state: RootState) => state.info);
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['65%', '8%'], []);
+  const [showTransactions, setShowTransactions] = useState(false)
+  const snapPoints = useMemo(() => ['8%', '48%'], []);
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
@@ -188,6 +189,12 @@ const DashboardScreen = () => {
       },
   ]);
   }, []);
+
+  useEffect(() => {
+    if (transactionsList.length) {
+      setShowTransactions(true)
+    }
+  }, [transactionsList])
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -244,9 +251,11 @@ const DashboardScreen = () => {
       </ScrollView>
       <BottomSheet
         ref={bottomSheetRef}
-        index={1}
+        index={0}
         snapPoints={snapPoints}
         contentHeight={1}
+        enableHandlePanningGesture
+        enableContentPanningGesture
         onChange={handleSheetChanges}>
         <View style={styles.transactionsContentHolder}>
           <View style={styles.transactionsPanel}>
