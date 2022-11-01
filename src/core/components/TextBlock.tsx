@@ -6,11 +6,12 @@ type TextBlockProps = {
   alignment?: 'left' | 'center' | 'right',
   style?: any;
   color?: string;
+  allCaps?: boolean;
 };
 
-const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, children, alignment, style, color = '#000'}) => {
+const TextBlock: React.FC<PropsWithChildren<TextBlockProps>> = ({variant, children, alignment, style, allCaps, color = '#000'}) => {
   return (
-    <Text style={{...styles[variant], color, ...style, textAlign: alignment ? alignment : 'left',}}>{children}</Text>
+    <Text style={{...styles[variant], color, ...style, textAlign: alignment ? alignment : 'left', textTransform: allCaps ? 'uppercase' : 'none'}}>{children}</Text>
   );
 };
 

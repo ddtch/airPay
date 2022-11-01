@@ -32,6 +32,9 @@ import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import ItemIconFigma from '../../../../assets/svg/transaction-logo-1.svg';
 import ItemIconAmazon from '../../../../assets/svg/transaction-logo-2.svg';
 import ItemIconMcDonalds from '../../../../assets/svg/transaction-logo-3.svg';
+import { useNavigation } from '@react-navigation/native';
+import { NAV_TYPE } from '../../../core/models/ScreenTypes';
+import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
 
 const mockAva = require('../../../../assets/avatar1.jpeg');
 
@@ -52,6 +55,7 @@ const ActionsBlock: React.FC<ActionsBlockProps> = ({actionSelected}) => {
       type: QuickActionTypes.PAY,
       label: 'Pay',
       icon: <ActionPay width={36} height={36} />,
+      link: 'payment',
     },
     {
       id: 3,
@@ -166,8 +170,13 @@ const DashboardScreen = () => {
   }, []);
   const {t} = useTranslation();
   const dispatch = useDispatch();
+  const nav = useNavigation<NAV_TYPE>();
 
-  const handleActionSelected = (actionType: QuickActionTypes) => {};
+  const handleActionSelected = (actionType: QuickActionTypes) => {
+    if (actionType === QuickActionTypes.PAY) {
+      nav.navigate(SCREEN_NAME.PaymentsScreen);
+    }
+  };
 
   useEffect(() => {
     setTransactionsList([
