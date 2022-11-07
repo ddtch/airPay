@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Keyboard, KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
 import Swiper from 'react-native-swiper';
 import {mainStyles} from '../../../../styles/main.styles';
 import {MainButton} from '../../../core/components/MainButton';
@@ -11,6 +11,8 @@ import {setWalletConnectMode} from '../../../store/info.slice';
 import WalletConnectionsActionSheet, { mockWallets } from '../../../core/components/WalletConnectionsActionSheet';
 import { setUser } from '../../../store/user.slice';
 import { setLoggedInStatus } from '../../../store/auth.slice';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import LoginForm from '../../../core/components/LoginForm';
 
 const onboardingBg = require('../../../../assets/onboarding-bg.png');
 const pbg = require('../../../../assets/svg/pbg-1.png');
@@ -60,22 +62,15 @@ const OnboardingScreen = () => {
             />
           </View>
         </View>
-
-        {/* <View style={styles.slideHolder}>
-          <View style={styles.topPart}>
-            <Text>New slide</Text>
-          </View>
-          <View style={styles.botPart}>
-            <Text style={styles.header}>You can add more of them</Text>
-            <MainButton onPress={() => null} title={t('ok')} />
-          </View>
-        </View> */}
       </Swiper>
-
+      {/* <KeyboardAvoidingView style={{flex: 1}}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
       <WalletConnectionsActionSheet
         walletsList={mockWallets}
         onWalletConnected={handleConnectionProcess}
       />
+      {/* </TouchableWithoutFeedback>
+      </KeyboardAvoidingView> */}
     </View>
   );
 };

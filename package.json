@@ -31,6 +31,7 @@
     "react-native-screens": "^3.18.2",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-splash-screen": "^3.3.0",
+    "react-native-style-utilities": "^1.0.1",
     "react-native-svg": "^13.4.0",
     "react-native-swiper": "^1.6.0",
     "react-native-touchable-scale": "^2.2.0",
