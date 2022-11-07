@@ -299,15 +299,15 @@ const DashboardScreen = () => {
             marginTop: 10,
             marginBottom: 40,
           }}>
-          <BaseTextListItem label="Card Type" text="Some type" />
-          <BaseTextListItem label="Name on card" text="Some type" />
+          {/* <BaseTextListItem label="Card Type" text="Some type" /> */}
+          <BaseTextListItem label="Name on card" text="David Cholariia" />
           <BaseTextListItem
             label="Card Number"
-            text="1234 6732 7890 5168"
+            text="3742 6732 7890 5168"
             onPressed={() => Alert.alert('Copied to clipboard')}
             copied
           />
-          <BaseTextListItem label="CVV" text="123" />
+          <BaseTextListItem label="CVV" text="563" />
           <BaseTextListItem label="Expiration Date" text="06/24" />
         </View>
         <View
