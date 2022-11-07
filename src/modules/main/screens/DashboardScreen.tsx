@@ -6,14 +6,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../store';
@@ -31,10 +26,12 @@ import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 
 import ItemIconFigma from '../../../../assets/svg/transaction-logo-1.svg';
 import ItemIconAmazon from '../../../../assets/svg/transaction-logo-2.svg';
-import ItemIconMcDonalds from '../../../../assets/svg/transaction-logo-3.svg';
-import { useNavigation } from '@react-navigation/native';
-import { NAV_TYPE } from '../../../core/models/ScreenTypes';
-import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
+import {useNavigation} from '@react-navigation/native';
+import {NAV_TYPE} from '../../../core/models/ScreenTypes';
+import {SCREEN_NAME} from '../../../core/constants/SCREEN_NAME';
+import WalletListItem from '../../../core/components/WalletListItem';
+import BaseTextListItem from '../../../core/components/BaseTextListItem';
+import {MainButton} from '../../../core/components/MainButton';
 
 const mockAva = require('../../../../assets/avatar1.jpeg');
 
@@ -162,9 +159,11 @@ const DashboardScreen = () => {
   const [transactionsList, setTransactionsList] = useState<any[]>([]);
   const {user} = useSelector((state: RootState) => state.user);
   const {cardsData} = useSelector((state: RootState) => state.info);
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const [showTransactions, setShowTransactions] = useState(false)
-  const snapPoints = useMemo(() => ['8%', '48%'], []);
+  const transactionsSheetRef = useRef<BottomSheet>(null);
+  const cardInfoSheetRef = useRef<BottomSheet>(null);
+  const [showTransactions, setShowTransactions] = useState(false);
+  const transactionsSheetSnapPoints = useMemo(() => ['8%', '48%'], []);
+  const cardInfoSheetSnapPoints = useMemo(() => [1, '65%'], []);
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
@@ -176,6 +175,10 @@ const DashboardScreen = () => {
     if (actionType === QuickActionTypes.PAY) {
       nav.navigate(SCREEN_NAME.PaymentsScreen);
     }
+  };
+
+  const handleCardInfoPressed = () => {
+    cardInfoSheetRef.current?.snapToIndex(1);
   };
 
   useEffect(() => {
@@ -196,14 +199,14 @@ const DashboardScreen = () => {
         currency: '$',
         icon: <ItemIconAmazon />,
       },
-  ]);
+    ]);
   }, []);
 
   useEffect(() => {
     if (transactionsList.length) {
-      setShowTransactions(true)
+      setShowTransactions(true);
     }
-  }, [transactionsList])
+  }, [transactionsList]);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -248,20 +251,26 @@ const DashboardScreen = () => {
             style={{paddingHorizontal: 20}}>
             {t('my-cards')}
           </TextBlock>
-          <VirtualCardsSlider cardsData={cardsData} />
+          <VirtualCardsSlider
+            cardsData={cardsData}
+            onInfoPress={handleCardInfoPressed}
+          />
         </View>
 
         <View style={styles.actionsHolder}>
-          <TextBlock variant={'title'} color={'#000'} style={{marginBottom: 20}}>
+          <TextBlock
+            variant={'title'}
+            color={'#000'}
+            style={{marginBottom: 20}}>
             {t('quick-actions')}
           </TextBlock>
           <ActionsBlock actionSelected={handleActionSelected} />
         </View>
       </ScrollView>
       <BottomSheet
-        ref={bottomSheetRef}
+        ref={transactionsSheetRef}
         index={0}
-        snapPoints={snapPoints}
+        snapPoints={transactionsSheetSnapPoints}
         contentHeight={1}
         enableHandlePanningGesture
         enableContentPanningGesture
@@ -275,6 +284,37 @@ const DashboardScreen = () => {
           </View>
 
           <PaymentsList payments={transactionsList} />
+        </View>
+      </BottomSheet>
+
+      <BottomSheet
+        ref={cardInfoSheetRef}
+        snapPoints={cardInfoSheetSnapPoints}
+        index={0}
+        contentHeight={1}
+        backdropComponent={BottomSheetBackdrop}>
+        <View
+          style={{
+            paddingHorizontal: 20,
+            marginTop: 10,
+            marginBottom: 40,
+          }}>
+          <BaseTextListItem label="Card Type" text="Some type" />
+          <BaseTextListItem label="Name on card" text="Some type" />
+          <BaseTextListItem
+            label="Card Number"
+            text="1234 6732 7890 5168"
+            onPressed={() => Alert.alert('Copied to clipboard')}
+            copied
+          />
+          <BaseTextListItem label="CVV" text="123" />
+          <BaseTextListItem label="Expiration Date" text="06/24" />
+        </View>
+        <View
+          style={{
+            paddingHorizontal: 20,
+          }}>
+          <MainButton title="Close" onPress={() => null} />
         </View>
       </BottomSheet>
     </SafeAreaView>

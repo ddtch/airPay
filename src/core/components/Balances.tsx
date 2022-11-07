@@ -34,6 +34,7 @@ const blocks = [
 ]
 
 const Balances = () => {
+  
   return (
     <View style={styles.holder}>
       {

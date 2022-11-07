@@ -15,7 +15,6 @@ import {mainStyles} from '../../../styles/main.styles';
 import WalletListItem from './WalletListItem';
 import LedIndicator from './LedIndicator';
 import TextBlock from './TextBlock';
-import IconCopy from '../../../assets/svg/icon-copy.svg';
 import {MainButton} from './MainButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {setWalletConnectMode} from '../../store/info.slice';
@@ -28,6 +27,7 @@ import SolIcon from '../../../assets/svg/icon-sol-wallet.svg';
 import LoginForm from './LoginForm';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {useStyle} from 'react-native-style-utilities';
+import CopyBtn from './CopyBtn';
 
 export const mockWallets = [
   {
@@ -190,23 +190,7 @@ const WalletConnectionsActionSheet = ({
                         style={{opacity: 0.6, marginRight: 20, width: '75%'}}>
                         ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh
                       </Text>
-                      <TouchableOpacity
-                        style={{
-                          display: 'flex',
-                          maxWidth: '75%',
-                          borderWidth: 1,
-                          borderColor: 'rgba(0,0,0,.45)',
-                          height: 32,
-                          width: 32,
-                          borderRadius: 32,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                        onPress={() =>
-                          Alert.alert('Address copied to clipboard')
-                        }>
-                        <IconCopy width={14} height={14} />
-                      </TouchableOpacity>
+                      <CopyBtn onPress={() => Alert.alert('Address copied to clipboard')}/>
                     </View>
                     <MainButton
                       onPress={handleSuccessConnection}
