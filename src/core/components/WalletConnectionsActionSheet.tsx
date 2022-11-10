@@ -28,6 +28,7 @@ import LoginForm from './LoginForm';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {useStyle} from 'react-native-style-utilities';
 import CopyBtn from './CopyBtn';
+import {walletService} from '../services';
 
 export const mockWallets = [
   {
@@ -62,6 +63,7 @@ const WalletConnectionsActionSheet = ({
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const {walletConnectMode} = useSelector((state: RootState) => state.info);
+  const [conectedWalletData, setConectedWalletData] = useState<any>(null);
   const [passwordStage, setPasswordStage] = useState(false);
 
   const handleWalletClick = (waletId: number, isConnected: boolean) => {
@@ -70,39 +72,48 @@ const WalletConnectionsActionSheet = ({
     }
     setActiveWallet(waletId);
     setPasswordStage(true);
-    // if (!isConnected) {
-    //   setConnectNewWallet(true);
-    //   actionSheetRef.current?.show();
-    //   setTimeout(() => {
-    //     setIsLoading(false);
-    //   }, 1300);
-    // }
   };
 
-  const handleSuccessConnection = () => {
+  const handleSuccessConnection = async () => {
     setConnectNewWallet(false);
     setIsLoading(true);
+
     const updatedWallets = [...walletsList, ...mockWallets]
       .map((el: any) => {
         if (el.id === activeWallet) {
           el.connected = true;
-          el.address = 'ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh';
+          el.address = conectedWalletData
+            ? conectedWalletData.address
+            : 'ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh';
         }
         return el;
       })
       .filter(el => el && el.connected);
+
     onWalletConnected(uniqBy(updatedWallets, 'id'));
     dispatch(setWalletConnectMode(false));
     setActiveWallet(-1);
   };
 
   const handleFormSubmitted = (formData: any) => {
-      setConnectNewWallet(true);
-      setPasswordStage(false);
-      // actionSheetRef.current?.show();
-      setTimeout(() => {
+    setConnectNewWallet(true);
+    setPasswordStage(false);
+
+    const walletData = walletService
+      .getAccountResources(
+        'retire rug permit broccoli swear million settle success shrimp mandate spike boil',
+      )
+      .then(resp => {
+        setConectedWalletData(resp);
+        return resp;
+      })
+      .catch(err => {
+        console.log('++++++++++++++++++++++++++++++++++++');
+        console.log(err);
+      })
+      .finally(() => {
         setIsLoading(false);
-      }, 1300);
+      });
   };
 
   useEffect(() => {
@@ -127,15 +138,13 @@ const WalletConnectionsActionSheet = ({
   );
 
   return (
-    <KeyboardAvoidingView
-        behavior={'height'}>
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    <ActionSheet
-      ref={actionSheetRef}
-      onClose={handleSheetClosed}
-      headerAlwaysVisible
-      containerStyle={actionSheetContainerStyle}>
-      
+    <KeyboardAvoidingView behavior={'height'}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <ActionSheet
+          ref={actionSheetRef}
+          onClose={handleSheetClosed}
+          headerAlwaysVisible
+          containerStyle={actionSheetContainerStyle}>
           <View
             style={{
               ...mainStyles.actionSheetContent,
@@ -188,9 +197,15 @@ const WalletConnectionsActionSheet = ({
                       }}>
                       <Text
                         style={{opacity: 0.6, marginRight: 20, width: '75%'}}>
-                        ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh
+                        {conectedWalletData
+                          ? conectedWalletData.address
+                          : 'ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh'}
                       </Text>
-                      <CopyBtn onPress={() => Alert.alert('Address copied to clipboard')}/>
+                      <CopyBtn
+                        onPress={() =>
+                          Alert.alert('Address copied to clipboard')
+                        }
+                      />
                     </View>
                     <MainButton
                       onPress={handleSuccessConnection}
@@ -201,9 +216,9 @@ const WalletConnectionsActionSheet = ({
               </View>
             )}
           </View>
-    </ActionSheet>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+        </ActionSheet>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

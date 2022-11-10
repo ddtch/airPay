@@ -36,7 +36,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    SplashScreen?.hide();
+    setTimeout(() => {
+      SplashScreen?.hide();
+    }, 2500);
     GlobalFont.applyGlobal('MazzardM-Regular')
   }, [])
 

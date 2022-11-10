@@ -1,18 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useRef, useState} from 'react';
+import React, { useEffect } from 'react';
 import {useTranslation} from 'react-i18next';
-import {Image, Keyboard, KeyboardAvoidingView, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import Swiper from 'react-native-swiper';
 import {mainStyles} from '../../../../styles/main.styles';
 import {MainButton} from '../../../core/components/MainButton';
 import {NAV_TYPE} from '../../../core/models/ScreenTypes';
 import {useDispatch} from 'react-redux';
 import {setWalletConnectMode} from '../../../store/info.slice';
-import WalletConnectionsActionSheet, { mockWallets } from '../../../core/components/WalletConnectionsActionSheet';
-import { setUser } from '../../../store/user.slice';
-import { setLoggedInStatus } from '../../../store/auth.slice';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import LoginForm from '../../../core/components/LoginForm';
+import WalletConnectionsActionSheet, {
+  mockWallets,
+} from '../../../core/components/WalletConnectionsActionSheet';
+import {setUser} from '../../../store/user.slice';
+import {setLoggedInStatus} from '../../../store/auth.slice';
 
 const onboardingBg = require('../../../../assets/onboarding-bg.png');
 const pbg = require('../../../../assets/svg/pbg-1.png');
@@ -30,7 +30,11 @@ const OnboardingScreen = () => {
     setTimeout(() => {
       dispatch(setLoggedInStatus(true));
       dispatch(
-        setUser({firstName: 'David', lastName: 'Cholariia', username: 'username.man'}),
+        setUser({
+          firstName: 'David',
+          lastName: 'Cholariia',
+          username: 'username.man',
+        }),
       );
     }, 400);
   };
@@ -53,7 +57,7 @@ const OnboardingScreen = () => {
           </View>
           <View style={styles.botPart}>
             <Text style={styles.header}>
-              Instantly pay at any store{"\n"}with your on-chain tokens
+              Instantly pay at any store{'\n'}with your on-chain tokens
             </Text>
             <MainButton
               onPress={handleLogin}
@@ -63,14 +67,10 @@ const OnboardingScreen = () => {
           </View>
         </View>
       </Swiper>
-      {/* <KeyboardAvoidingView style={{flex: 1}}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
       <WalletConnectionsActionSheet
         walletsList={mockWallets}
         onWalletConnected={handleConnectionProcess}
       />
-      {/* </TouchableWithoutFeedback>
-      </KeyboardAvoidingView> */}
     </View>
   );
 };
