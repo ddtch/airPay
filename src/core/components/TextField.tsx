@@ -1,27 +1,40 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
-import { onChange } from 'react-native-reanimated';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import React from 'react';
+import {onChange} from 'react-native-reanimated';
 
 type TextFieldProps = {
   label?: string;
   placeholder?: string;
   value?: string;
-  type?: 'password' | 'text' | 'number',
-  onChange?: (value: string) => void,
-}
+  type?: 'password' | 'text' | 'number';
+  onChange?: (value: string) => void;
+};
 
-const TextField:React.FC<TextFieldProps> = ({label, placeholder, value, onChange}) => {
+const TextField: React.FC<TextFieldProps> = ({
+  label,
+  placeholder,
+  value,
+  type,
+  onChange,
+}) => {
   return (
     <View style={styles.inputHolder}>
       {label && <Text style={styles.inputLabel}>{label}</Text>}
       <View style={styles.textInputWrapper}>
-        <TextInput style={styles.input} placeholder={placeholder} value={value} onChangeText={(val: string) => onChange && onChange(val)}/>
+        <TextInput
+          secureTextEntry={type && type === 'password'}
+          style={styles.input}
+          placeholder={placeholder}
+          placeholderTextColor={'rgba(0,0,0,.7)'}
+          value={value}
+          onChangeText={(val: string) => onChange && onChange(val)}
+        />
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default TextField
+export default TextField;
 
 const styles = StyleSheet.create({
   inputHolder: {
@@ -35,7 +48,7 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     marginBottom: 4,
-    opacity: .8,
+    opacity: 0.8,
   },
   textInputWrapper: {
     paddingVertical: 8,
@@ -48,5 +61,6 @@ const styles = StyleSheet.create({
   input: {
     lineHeight: 16,
     fontSize: 16,
-  }
-})
+    textAlign: 'center',
+  },
+});

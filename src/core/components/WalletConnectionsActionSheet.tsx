@@ -17,7 +17,7 @@ import LedIndicator from './LedIndicator';
 import TextBlock from './TextBlock';
 import {MainButton} from './MainButton';
 import {useDispatch, useSelector} from 'react-redux';
-import {setWalletConnectMode} from '../../store/info.slice';
+import {setWalletAddress, setWalletConnectMode} from '../../store/info.slice';
 import {RootState} from '../../store';
 import uniqBy from 'lodash/uniqBy';
 
@@ -101,10 +101,11 @@ const WalletConnectionsActionSheet = ({
 
     const walletData = walletService
       .getAccountResources(
-        'retire rug permit broccoli swear million settle success shrimp mandate spike boil',
+        'meow',
       )
       .then(resp => {
         setConectedWalletData(resp);
+        dispatch(setWalletAddress(resp.address));
         return resp;
       })
       .catch(err => {
@@ -196,7 +197,7 @@ const WalletConnectionsActionSheet = ({
                         paddingBottom: 20,
                       }}>
                       <Text
-                        style={{opacity: 0.6, marginRight: 20, width: '75%'}}>
+                        style={{opacity: 0.6, marginRight: 20, width: '77%'}}>
                         {conectedWalletData
                           ? conectedWalletData.address
                           : 'ArWXC2qgiiNS9nrtDyjRZwGUJwEdrMQdUQedfLEAjGhh'}

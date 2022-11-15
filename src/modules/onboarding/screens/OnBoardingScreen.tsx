@@ -32,7 +32,7 @@ const OnboardingScreen = () => {
       dispatch(
         setUser({
           firstName: 'David',
-          lastName: 'Cholariia',
+          lastName: 'Carrera',
           username: 'username.man',
         }),
       );

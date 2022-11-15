@@ -78,7 +78,7 @@ const LinkItem = ({item, index, navTo}: any) => {
 };
 
 const MainProfileScreen = () => {
-  const {user} = useSelector((state: RootState) => state.user);
+  const {balance} = useSelector((state: RootState) => state.info);
   const {navigate} = useNavigation<NAV_TYPE>();
 
   return (
@@ -124,7 +124,7 @@ const MainProfileScreen = () => {
           <View style={styles.topHolder}>
             <View style={styles.userDataHolder}>
               <Text style={{color: '#fff', fontWeight: '700', fontSize: 16}}>
-                ddtch.sol
+                carrera.apt
               </Text>
               <Image
                 source={mockAva1}
@@ -133,7 +133,7 @@ const MainProfileScreen = () => {
                 style={styles.avatar}
               />
               <Text style={{color: '#fff', fontWeight: '700', fontSize: 18}}>
-                $9,120.00
+                ${balance.total}
               </Text>
             </View>
           </View>
@@ -141,7 +141,7 @@ const MainProfileScreen = () => {
           <View style={styles.topHolder}>
             <View style={styles.userDataHolder}>
               <Text style={{color: '#fff', fontWeight: '700', fontSize: 16}}>
-                dorado.apt
+                ddtch.sol
               </Text>
               <Image
                 source={mockAva}
@@ -150,7 +150,7 @@ const MainProfileScreen = () => {
                 style={styles.avatar}
               />
               <Text style={{color: '#fff', fontWeight: '700', fontSize: 18}}>
-                $172.10
+                $76.10
               </Text>
             </View>
           </View>

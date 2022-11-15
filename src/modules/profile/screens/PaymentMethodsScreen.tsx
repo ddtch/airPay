@@ -1,9 +1,4 @@
-import {
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {mainStyles} from '../../../../styles/main.styles';
 
@@ -39,9 +34,7 @@ export const mcWallets = [
   },
 ];
 
-
 const PaymentMethodsScreen = () => {
-  
   const [filteredWallets, setFilteredWallets] = useState(
     mcWallets.filter(el => el && el.connected),
   );
@@ -52,7 +45,7 @@ const PaymentMethodsScreen = () => {
 
   return (
     <SafeAreaView style={{...mainStyles.container}}>
-      {Platform.OS === 'android' && <View style={{height: 50}}/>}
+      {Platform.OS === 'android' && <View style={{height: 50}} />}
       <View style={{...mainStyles.content, paddingHorizontal: 0}}>
         <View style={{marginBottom: 30}}>
           {filteredWallets.map(

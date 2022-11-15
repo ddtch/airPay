@@ -1,1 +1,1 @@
-export const BASE_API_URL =  'https://pacific-gorge-73318.herokuapp.com' // 'http://localhost:3001' //
+export const BASE_API_URL =  'https://pacific-gorge-73318.herokuapp.com' // 'http://localhost:3001' // 

@@ -6,11 +6,17 @@ import InfoIcon from '../../../assets/svg/icon-info.svg';
 
 type VirtualCardsSliderProps = {
   cardsData: any[];
-  onInfoPress: () => void,
+  onInfoPress: (cardId: number) => void;
+  onCardPress: () => void;
 };
 
-const VirtualCardsSlider: React.FC<VirtualCardsSliderProps> = ({cardsData, onInfoPress}) => {
+const VirtualCardsSlider: React.FC<VirtualCardsSliderProps> = ({
+  cardsData,
+  onInfoPress,
+  onCardPress,
+}) => {
   const {t} = useTranslation();
+
   return (
     <Swiper
       style={styles.wrapper}
@@ -20,6 +26,8 @@ const VirtualCardsSlider: React.FC<VirtualCardsSliderProps> = ({cardsData, onInf
         position: 'absolute',
         bottom: 0,
       }}
+      index={0}
+      loop={false}
       showsPagination={true}>
       {cardsData.map(el => (
         <View
@@ -30,13 +38,17 @@ const VirtualCardsSlider: React.FC<VirtualCardsSliderProps> = ({cardsData, onInf
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Image
-            source={el.cardImage}
-            resizeMode={'contain'}
-            style={{width: '90%', height: 161}}
-          />
-          <Pressable style={styles.infoIconHolder} onPress={onInfoPress}>
-            <InfoIcon width={26} height={26}/>
+          {/* <Pressable onPress={onCardPress} style={{width: '90%', height: 161, marginLeft: 40}}> */}
+            <Image
+              source={el.cardImage}
+              resizeMode={'contain'}
+              style={{width: '90%', height: 161}}
+            />
+          {/* </Pressable> */}
+          <Pressable
+            style={styles.infoIconHolder}
+            onPress={() => onInfoPress(el.id)}>
+            <InfoIcon width={26} height={26} />
           </Pressable>
         </View>
       ))}

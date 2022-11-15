@@ -13,12 +13,24 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import { MainButton } from './MainButton';
-import { useNavigation } from '@react-navigation/native';
-import { NAV_TYPE } from '../models/ScreenTypes';
+import {MainButton} from './MainButton';
+import {useNavigation} from '@react-navigation/native';
+import {NAV_TYPE} from '../models/ScreenTypes';
+import {ITransaction} from '../models/ITransaction';
+import {ScrollView} from 'react-native-gesture-handler';
 
-const PaymentStatus = ({success, showStatusInfo}: any) => {
-  const {goBack} = useNavigation<NAV_TYPE>(); 
+type PaymentStatusProps = {
+  success: boolean;
+  showStatusInfo: boolean;
+  details: ITransaction | null;
+};
+
+const PaymentStatus = ({
+  success,
+  showStatusInfo,
+  details,
+}: PaymentStatusProps) => {
+  const {goBack} = useNavigation<NAV_TYPE>();
   const yOffset = useSharedValue(-200);
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -51,7 +63,7 @@ const PaymentStatus = ({success, showStatusInfo}: any) => {
 
   useEffect(() => {
     togglePaymentStatusInfo(showStatusInfo);
-    if (success) { 
+    if (success) {
       yTextOffset.value = withDelay(850, withSpring(0));
       textOpacity.value = withDelay(810, withSpring(1));
     }
@@ -69,7 +81,7 @@ const PaymentStatus = ({success, showStatusInfo}: any) => {
             <RetryIcon width={24} height={24} />
             {success && <SuccessIcon width={64} height={64} />}
             {!success && <ErrorIcon width={64} height={64} />}
-            <CloseIcon width={24} height={24} />
+            <CloseIcon width={24} height={24} onPress={() => goBack()}/>
           </View>
           <TextBlock variant={'title'} color={'#fff'} alignment={'center'}>
             {!success
@@ -79,19 +91,37 @@ const PaymentStatus = ({success, showStatusInfo}: any) => {
         </View>
       </Animated.View>
 
+      <ScrollView>
       <Animated.View style={animatedTextStyles}>
-        <TextBlock variant={'title'}>Payment details</TextBlock>
-        <TextBlock variant={'subtitle'} allCaps>Category</TextBlock>
-        <TextBlock variant={'body'}>Purchase</TextBlock>
-        <TextBlock variant={'subtitle'} allCaps>Swap price impact</TextBlock>
-        <TextBlock variant={'body'}>{'>0.1%'}</TextBlock>
-        <TextBlock variant={'subtitle'} allCaps>Swap</TextBlock>
-        <TextBlock variant={'body'}>Game tokens for USD</TextBlock>
-        <TextBlock variant={'subtitle'} allCaps>Fees</TextBlock>
-        <TextBlock variant={'body'}>{'0.3%'}</TextBlock>
+          <TextBlock variant={'title'}>Payment details</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Category
+          </TextBlock>
+          <TextBlock variant={'body'}>{details?.category}</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Vendor
+          </TextBlock>
+          <TextBlock variant={'body'}>{details?.vendor}</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Swap price impact
+          </TextBlock>
+          <TextBlock variant={'body'}>{details?.swap_price_impact}</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Swap
+          </TextBlock>
+          <TextBlock variant={'body'}>Game tokens for USD</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Fees
+          </TextBlock>
+          <TextBlock variant={'body'}>{details?.fees}</TextBlock>
+          <TextBlock variant={'subtitle'} allCaps>
+            Amount in USD
+          </TextBlock>
+          <TextBlock variant={'body'}>{details?.amount_paid_usd}</TextBlock>
 
-        <MainButton title='Ok' onPress={() => goBack()}></MainButton>
+          <MainButton title="Ok" onPress={() => goBack()}></MainButton>
       </Animated.View>
+      </ScrollView>
     </>
   );
 };

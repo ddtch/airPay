@@ -33,7 +33,7 @@ const TAB_INFO: TabInfoType[] = [
   {
     key: 0,
     screen: SCREEN_NAME.MainTabRoutes,
-    rootScreen: SCREEN_NAME.TabRoutes,
+    rootScreen: SCREEN_NAME.Dashboard,
     icon: homeTabIcon,
     labelKey: 'tabs.main',
   },

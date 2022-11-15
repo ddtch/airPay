@@ -1,5 +1,5 @@
 export enum EBalanceBlockType {
-  total = 1,
-  token,
-  nft,
+  TOTAL = 'total',
+  TOKENS = 'tokens',
+  NFT = 'nft'
 }

@@ -21,7 +21,7 @@ export type SCREEN_PARAMS_ALL = {
   [SCREEN_NAME.Dashboard]: undefined;
   [SCREEN_NAME.NotificationsScreen]: undefined;
   [SCREEN_NAME.NotificationItemScreen]: {itemId: number};
-  [SCREEN_NAME.PaymentsScreen]: undefined;
+  [SCREEN_NAME.PaymentsScreen]: {transactionId?: number};
 
   [SCREEN_NAME.ProfileScreen]: undefined;
   [SCREEN_NAME.PersonalDetails]: undefined;
