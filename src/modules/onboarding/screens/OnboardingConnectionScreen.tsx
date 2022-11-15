@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import {setLoggedInStatus} from '../../../store/auth.slice';
 import { setUser } from '../../../store/user.slice';
 
-const OnboardingConnectionScreen = () => {
+const OnBoardingConnectionScreen = () => {
   const [isLoading, setisLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -45,7 +45,7 @@ const OnboardingConnectionScreen = () => {
   )
 }
 
-export default OnboardingConnectionScreen
+export default OnBoardingConnectionScreen
 
 const styles = StyleSheet.create({
   indicatorHolder: {

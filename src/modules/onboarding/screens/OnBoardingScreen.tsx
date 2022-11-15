@@ -17,7 +17,7 @@ import {setLoggedInStatus} from '../../../store/auth.slice';
 const onboardingBg = require('../../../../assets/onboarding-bg.png');
 const pbg = require('../../../../assets/svg/pbg-1.png');
 
-const OnboardingScreen = () => {
+const OnBoardingScreen = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const {navigate} = useNavigation<NAV_TYPE>();
@@ -75,7 +75,7 @@ const OnboardingScreen = () => {
   );
 };
 
-export default OnboardingScreen;
+export default OnBoardingScreen;
 
 const styles = StyleSheet.create({
   content: {

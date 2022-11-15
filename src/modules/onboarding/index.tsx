@@ -3,8 +3,8 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SCREEN_PARAMS_ALL } from '../../core/models/ScreenTypes';
 import { SCREEN_NAME } from '../../core/constants/SCREEN_NAME';
-import OnboardingScreen from './screens/OnboardingScreen';
-import OnboardingConnectionScreen from './screens/OnboardingConnectionScreen';
+import OnBoardingScreen from './screens/OnBoardingScreen';
+import OnBoardingConnectionScreen from './screens/OnBoardingConnectionScreen';
 
 const Stack = createNativeStackNavigator<SCREEN_PARAMS_ALL>();
 
@@ -19,8 +19,8 @@ const OnboardingStack = () => {
           headerTintColor: 'rgba(0,0,0,.4)',
           headerShown: false,
         }}>
-        <Stack.Screen name={SCREEN_NAME.OnboardingWellcome} component={OnboardingScreen} />
-        <Stack.Screen name={SCREEN_NAME.OnboardingConnect} component={OnboardingConnectionScreen} />
+        <Stack.Screen name={SCREEN_NAME.OnboardingWellcome} component={OnBoardingScreen} />
+        <Stack.Screen name={SCREEN_NAME.OnboardingConnect} component={OnBoardingConnectionScreen} />
       </Stack.Group>
     </Stack.Navigator>
   )
