@@ -51,7 +51,7 @@ export const initialTransactions: ITransaction[] = [
     id: 61,
     title: 'Joe Coffee',
     amount: 5.25,
-    time: '08:47 AM',
+    time: '12:28 PM',
     currency: '$',
     icon: <ItemIconJoeCoffe />,
     category: 'Purchase',
