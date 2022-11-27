@@ -9,54 +9,54 @@ import {
   Alert,
   Pressable,
 } from 'react-native';
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {mainStyles} from '../../../../styles/main.styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../../store';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { mainStyles } from '../../../../styles/main.styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store';
 import TextBlock from '../../../core/components/TextBlock';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import VirtualCardsSlider from '../../../core/components/VirtualCardsSlider';
-import {QuickActionTypes} from '../../../core/models/QuickActionTypes';
+import { QuickActionTypes } from '../../../core/models/QuickActionTypes';
 import ActionPromo from '../../../../assets/svg/icon-promo.svg';
 import ActionPay from '../../../../assets/svg/icon-pay.svg';
 import ActionEarn from '../../../../assets/svg/icon-earn.svg';
 import ActionMore from '../../../../assets/svg/icon-more.svg';
 import ProgressBar from '../../../core/components/ProgressBar';
 import Balances from '../../../core/components/Balances';
-import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import ItemIconFigma from '../../../../assets/svg/transaction-logo-1.svg';
 import ItemIconAmazon from '../../../../assets/svg/transaction-logo-2.svg';
+import ItemIconJoeCoffe from '../../../../assets/svg/transaction-logo-6.svg';
 import ItemIconStarbucks from '../../../../assets/svg/transaction-logo-5.svg';
-import {useNavigation} from '@react-navigation/native';
-import {NAV_TYPE} from '../../../core/models/ScreenTypes';
-import {SCREEN_NAME} from '../../../core/constants/SCREEN_NAME';
-import WalletListItem from '../../../core/components/WalletListItem';
+import { useNavigation } from '@react-navigation/native';
+import { NAV_TYPE } from '../../../core/models/ScreenTypes';
+import { SCREEN_NAME } from '../../../core/constants/SCREEN_NAME';
 import BaseTextListItem from '../../../core/components/BaseTextListItem';
-import {MainButton} from '../../../core/components/MainButton';
-import {transactionsService, walletService} from '../../../core/services';
+import { MainButton } from '../../../core/components/MainButton';
+import { transactionsService, walletService } from '../../../core/services';
 import {
   addNotificationItem,
   setCardsData,
   setPayClickCount,
   setWalletBalance,
 } from '../../../store/info.slice';
-import {ICardDetails} from '../../../core/models/ICardDetails';
+import { ICardDetails } from '../../../core/models/ICardDetails';
 import dayjs from 'dayjs';
-import {ITransaction} from '../../../core/models/ITransaction';
+import { ITransaction } from '../../../core/models/ITransaction';
 
 const mockAva = require('../../../../assets/avatar1.jpeg');
 
 export const initialTransactions: ITransaction[] = [
   {
-    id: 1,
-    title: 'Figma',
-    amount: 14.1,
-    time: '04:43 PM',
+    id: 61,
+    title: 'Joe Coffee',
+    amount: 5.25,
+    time: '08:47 AM',
     currency: '$',
-    icon: <ItemIconFigma />,
+    icon: <ItemIconJoeCoffe />,
     category: 'Purchase',
-    vendor: 'Figma',
-    amount_paid_usd: '14.1',
+    vendor: 'Joe Coffee',
+    amount_paid_usd: '5.25',
     swap_price_impact: '0.1',
     fees: '0.1',
   },
@@ -73,13 +73,26 @@ export const initialTransactions: ITransaction[] = [
     swap_price_impact: '0.1',
     fees: '0.1',
   },
+  {
+    id: 1,
+    title: 'Figma',
+    amount: 14.1,
+    time: '04:43 PM',
+    currency: '$',
+    icon: <ItemIconFigma />,
+    category: 'Purchase',
+    vendor: 'Figma',
+    amount_paid_usd: '14.1',
+    swap_price_impact: '0.1',
+    fees: '0.1',
+  },
 ];
 
 type ActionsBlockProps = {
   actionSelected: (type: QuickActionTypes) => void;
 };
 
-const ActionsBlock: React.FC<ActionsBlockProps> = ({actionSelected}) => {
+const ActionsBlock: React.FC<ActionsBlockProps> = ({ actionSelected }) => {
   const actions = [
     {
       id: 1,
@@ -180,12 +193,12 @@ const TransactionsList: React.FC<TransactionsListProps> = ({
                 justifyContent: 'flex-start',
               }}>
               {item.icon}
-              <View style={{marginLeft: 10}}>
+              <View style={{ marginLeft: 10 }}>
                 <Text
-                  style={{fontWeight: '400', fontSize: 14, marginBottom: 8}}>
+                  style={{ fontWeight: '400', fontSize: 14, marginBottom: 8 }}>
                   {item.title}
                 </Text>
-                <Text style={{fontWeight: '400', fontSize: 14, opacity: 0.7}}>
+                <Text style={{ fontWeight: '400', fontSize: 14, opacity: 0.7 }}>
                   {item.time}
                 </Text>
               </View>
@@ -210,9 +223,9 @@ const TransactionsList: React.FC<TransactionsListProps> = ({
 const DashboardScreen = () => {
   const [transactionsList, setTransactionsList] = useState<any[]>([]);
   const [currentCard, setCurrentCard] = useState<null | ICardDetails>(null);
-  const {user} = useSelector((state: RootState) => state.user);
-  const {walletAddress} = useSelector((state: RootState) => state.info);
-  const {cardsData, payClickCount} = useSelector(
+  const { user } = useSelector((state: RootState) => state.user);
+  const { walletAddress } = useSelector((state: RootState) => state.info);
+  const { cardsData, payClickCount } = useSelector(
     (state: RootState) => state.info,
   );
   const transactionsSheetRef = useRef<BottomSheet>(null);
@@ -226,7 +239,7 @@ const DashboardScreen = () => {
       transactionsSheetRef.current?.snapToIndex(0);
     }
   }, []);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const nav = useNavigation<NAV_TYPE>();
 
@@ -244,7 +257,7 @@ const DashboardScreen = () => {
   };
 
   const handleStransactionSelected = (transactionId: number) => {
-    nav.navigate(SCREEN_NAME.PaymentsScreen, {transactionId});
+    nav.navigate(SCREEN_NAME.PaymentsScreen, { transactionId });
   };
 
   useEffect(() => {
@@ -286,6 +299,16 @@ const DashboardScreen = () => {
     console.log('transaction in progress....')
     transactionsService.doTransaction().then(resp => {
       dispatch(setPayClickCount(1));
+      setTransactionsList([{
+        id: 3,
+        title: 'Starbucks',
+        amount: 10.67,
+        time: dayjs().format('HH:mm A'),
+        currency: '$',
+        icon: <ItemIconStarbucks />,
+        hidden: false,
+      },
+      ...transactionsList])
       dispatch(
         addNotificationItem({
           id: 4,
@@ -297,15 +320,24 @@ const DashboardScreen = () => {
           icon: true,
         }),
       );
+      
       walletService.getAccountResources('meow').then(resp => {
         dispatch(setWalletBalance(resp.balance));
+        // dispatch(setWalletBalance({
+        //   ...resp.balance,
+        //   tokens: parseFloat(`${+resp.balance.tokens - 10.67}`).toFixed(2),
+        //   total: parseFloat(`${+resp.balance.tokens - 10.67}`).toFixed(2),
+        // }));
       });
-    });
+    })
+      .catch(err => {
+        console.log(err)
+      });
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.userInfo}>
           <View style={styles.personal}>
             <View style={styles.avatar}>
@@ -339,7 +371,7 @@ const DashboardScreen = () => {
           </View>
         </View>
 
-        <View style={{paddingHorizontal: 20, marginBottom: 30}}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 30 }}>
           <Balances />
         </View>
 
@@ -347,7 +379,7 @@ const DashboardScreen = () => {
           <TextBlock
             variant={'title'}
             color={'#000'}
-            style={{paddingHorizontal: 20}}>
+            style={{ paddingHorizontal: 20 }}>
             {t('my-cards')}
           </TextBlock>
           <VirtualCardsSlider
@@ -361,7 +393,7 @@ const DashboardScreen = () => {
           <TextBlock
             variant={'title'}
             color={'#000'}
-            style={{marginBottom: 20}}>
+            style={{ marginBottom: 20 }}>
             {t('quick-actions')}
           </TextBlock>
           <ActionsBlock actionSelected={handleActionSelected} />
@@ -379,7 +411,7 @@ const DashboardScreen = () => {
         onChange={handleSheetChanges}>
         <View style={styles.transactionsContentHolder}>
           <View style={styles.transactionsPanel}>
-            <TextBlock variant={'title'} style={{marginBottom: 0}}>
+            <TextBlock variant={'title'} style={{ marginBottom: 0 }}>
               {t('transactions')}
             </TextBlock>
             <Text style={styles.textBtn}>All</Text>

@@ -1,5 +1,5 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
 
 import RetryIcon from '../../../assets/svg/icon-payment-retry.svg';
 import CloseIcon from '../../../assets/svg/icon-payment-close.svg';
@@ -13,11 +13,11 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import {MainButton} from './MainButton';
-import {useNavigation} from '@react-navigation/native';
-import {NAV_TYPE} from '../models/ScreenTypes';
-import {ITransaction} from '../models/ITransaction';
-import {ScrollView} from 'react-native-gesture-handler';
+import { MainButton } from './MainButton';
+import { useNavigation } from '@react-navigation/native';
+import { NAV_TYPE } from '../models/ScreenTypes';
+import { ITransaction } from '../models/ITransaction';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type PaymentStatusProps = {
   success: boolean;
@@ -30,7 +30,7 @@ const PaymentStatus = ({
   showStatusInfo,
   details,
 }: PaymentStatusProps) => {
-  const {goBack} = useNavigation<NAV_TYPE>();
+  const { goBack } = useNavigation<NAV_TYPE>();
   const yOffset = useSharedValue(-200);
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -81,7 +81,7 @@ const PaymentStatus = ({
             <RetryIcon width={24} height={24} />
             {success && <SuccessIcon width={64} height={64} />}
             {!success && <ErrorIcon width={64} height={64} />}
-            <CloseIcon width={24} height={24} onPress={() => goBack()}/>
+            <CloseIcon width={24} height={24} onPress={() => goBack()} />
           </View>
           <TextBlock variant={'title'} color={'#fff'} alignment={'center'}>
             {!success
@@ -92,7 +92,7 @@ const PaymentStatus = ({
       </Animated.View>
 
       <ScrollView>
-      <Animated.View style={animatedTextStyles}>
+        <Animated.View style={animatedTextStyles}>
           <TextBlock variant={'title'}>Payment details</TextBlock>
           <TextBlock variant={'subtitle'} allCaps>
             Category
@@ -120,7 +120,7 @@ const PaymentStatus = ({
           <TextBlock variant={'body'}>{details?.amount_paid_usd}</TextBlock>
 
           <MainButton title="Ok" onPress={() => goBack()}></MainButton>
-      </Animated.View>
+        </Animated.View>
       </ScrollView>
     </>
   );

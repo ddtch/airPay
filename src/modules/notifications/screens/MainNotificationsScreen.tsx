@@ -3,7 +3,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -19,6 +18,7 @@ import {useTranslation} from 'react-i18next';
 import IconAptos from '../../../../assets/svg/icon-aptos.svg';
 import ItemIconMcDonalds from '../../../../assets/svg/transaction-logo-3.svg';
 import IconStarbucks from '../../../../assets/svg/icon-startbucks.svg';
+import ItemIconJoeCoffe from '../../../../assets/svg/icon-joe.svg';
 dayjs.extend(isYesterday);
 
 const MainNotificationsScreen = ({navigation, route}: any) => {
@@ -125,7 +125,8 @@ const MainNotificationsScreen = ({navigation, route}: any) => {
                         {!el.icon && (
                           <ItemIconMcDonalds width={26} height={26} />
                         )}
-                        {el.icon && <IconStarbucks width={32} height={32}/>}
+                        {el.icon && el.id !== 11 && <IconStarbucks width={32} height={32}/>}
+                        {el.icon && el.id === 11 && <ItemIconJoeCoffe width={32} height={32}/>}
                       </>
                     )}
                   </View>

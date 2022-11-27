@@ -60,8 +60,15 @@ const initialState: InfoState = {
   ],
   notificationsList: [
     {
+      id: 11,
+      date: dayjs().set('hours', 8).set('minutes', 47).valueOf(),
+      title: 'Transaction has been approved',
+      merchant: true,
+      icon: true,
+    },
+    {
       id: 1,
-      date: dayjs().valueOf(),
+      date: dayjs().subtract(1, 'day').valueOf(),
       title: 'Your wallet has been connected',
       text: 'Smart card’s balance is about to get to 0. Please, make your payment.',
       isRead: false,
