@@ -109,7 +109,7 @@ const PaymentStatus = ({
           <TextBlock variant={'subtitle'} allCaps>
             Swap
           </TextBlock>
-          <TextBlock variant={'body'}>Game tokens for USD</TextBlock>
+          <TextBlock variant={'body'}>Tokens for USD</TextBlock>
           <TextBlock variant={'subtitle'} allCaps>
             Fees
           </TextBlock>
